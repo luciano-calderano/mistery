@@ -1,0 +1,21 @@
+{
+  "name": "MYLib",
+  "version": "0.0.1",
+  "summary": "MYLib.",
+  "description": "MYLib.",
+  "license": "@Lc (MYLib)",
+  "authors": {
+    "": ""
+  },
+  "homepage": "http://lc,it",
+  "platforms": {
+    "ios": null
+  },
+  "source": {
+    "path": "/Users/lc/Desktop/Src/MYLib/"
+  },
+  "source_files": "MYLib/**/*.{swift}",
+  "pod_target_xcconfig": {
+    "SWIFT_VERSION": "3"
+  }
+}

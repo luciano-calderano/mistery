@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KpiLastView" customModule="MysteryClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="340"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#jobFinalTime" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noz-Us-zy7" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                    <rect key="frame" x="16" y="143" width="343" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="pn2-tE-5lu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4We-t3-Jiu">
+                    <rect key="frame" x="8" y="8" width="359" height="115"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#jobFinal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSt-Yd-JTH" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="239" height="15"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="commento.finale" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dHV-sN-WHb">
+                            <rect key="frame" x="0.0" y="18" width="359" height="97"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="counter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xC9-Wf-u7f" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                            <rect key="frame" x="239" y="0.0" width="120" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="120" id="gbA-1q-NFj"/>
+                                <constraint firstAttribute="height" constant="15" id="o5e-v3-Sjr"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="dHV-sN-WHb" secondAttribute="bottom" id="6Fh-xJ-gbv"/>
+                        <constraint firstItem="dHV-sN-WHb" firstAttribute="top" secondItem="jSt-Yd-JTH" secondAttribute="bottom" constant="3" id="BoN-DT-o5v"/>
+                        <constraint firstAttribute="height" constant="115" id="FHu-Cd-1oZ"/>
+                        <constraint firstAttribute="trailing" secondItem="dHV-sN-WHb" secondAttribute="trailing" id="Nxg-uq-tUv"/>
+                        <constraint firstAttribute="trailing" secondItem="jSt-Yd-JTH" secondAttribute="trailing" constant="120" id="RiR-6P-yQM"/>
+                        <constraint firstItem="dHV-sN-WHb" firstAttribute="leading" secondItem="4We-t3-Jiu" secondAttribute="leading" id="Sxj-Ed-ky0"/>
+                        <constraint firstItem="xC9-Wf-u7f" firstAttribute="top" secondItem="4We-t3-Jiu" secondAttribute="top" id="Ulx-Hm-uAt"/>
+                        <constraint firstAttribute="trailing" secondItem="xC9-Wf-u7f" secondAttribute="trailing" id="cwQ-4H-rhO"/>
+                        <constraint firstItem="jSt-Yd-JTH" firstAttribute="top" secondItem="4We-t3-Jiu" secondAttribute="top" id="mjR-bq-SjM"/>
+                        <constraint firstItem="jSt-Yd-JTH" firstAttribute="leading" secondItem="4We-t3-Jiu" secondAttribute="leading" id="vFc-YX-vxK"/>
+                    </constraints>
+                </view>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KRm-Fo-rDs">
+                    <rect key="frame" x="16" y="159" width="343" height="160"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="160" id="DNn-uf-VT6"/>
+                    </constraints>
+                    <date key="date" timeIntervalSinceReferenceDate="520862224.16634601">
+                        <!--2017-07-04 11:57:04 +0000-->
+                    </date>
+                </datePicker>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4We-t3-Jiu" secondAttribute="trailing" constant="8" id="1dT-Kh-hUS"/>
+                <constraint firstItem="KRm-Fo-rDs" firstAttribute="top" secondItem="noz-Us-zy7" secondAttribute="bottom" constant="1" id="24S-kk-nhc"/>
+                <constraint firstItem="noz-Us-zy7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="EPN-nJ-3xK"/>
+                <constraint firstItem="noz-Us-zy7" firstAttribute="top" secondItem="4We-t3-Jiu" secondAttribute="bottom" constant="20" id="Y6u-fV-NHf"/>
+                <constraint firstItem="4We-t3-Jiu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="fdN-1e-KS5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="noz-Us-zy7" secondAttribute="trailing" constant="16" id="gJ9-pU-OdS"/>
+                <constraint firstItem="KRm-Fo-rDs" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="jyj-3K-Psv"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KRm-Fo-rDs" secondAttribute="trailing" constant="16" id="ry4-q0-KVh"/>
+                <constraint firstItem="4We-t3-Jiu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="sjH-8Y-HHI"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="counterLabel" destination="xC9-Wf-u7f" id="eMs-7c-Bjb"/>
+                <outlet property="datePicker" destination="KRm-Fo-rDs" id="Rt6-ep-Fy8"/>
+                <outlet property="finalText" destination="dHV-sN-WHb" id="DzZ-hq-z3f"/>
+                <outlet property="finalView" destination="4We-t3-Jiu" id="erF-zc-jbt"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-111"/>
+        </view>
+    </objects>
+</document>

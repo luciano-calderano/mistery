@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (4.7.2)
+  - Zip (1.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - Zip (~> 1.1)
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Zip: 8877eede3dda76bcac281225c20e71c25270774c
+
+PODFILE CHECKSUM: f0dc98c6e2c2b00f6c2d912b03f2e4bffe0b9601
+
+COCOAPODS: 1.4.0

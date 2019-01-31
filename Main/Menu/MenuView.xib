@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Menu" customClass="MenuView" customModule="MisteryClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.63" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct7-OR-d29">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="side_menu_background" translatesAutoresizingMaskIntoConstraints="NO" id="qFb-L3-yZa">
+                    <rect key="frame" x="0.0" y="0.0" width="285" height="156"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="qFb-L3-yZa" secondAttribute="height" multiplier="95:52" id="7vx-Gd-NZC"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aa0-H4-x6S">
+                    <rect key="frame" x="0.0" y="156" width="285" height="511"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="WY9-jc-wbI"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="LaJ-2I-YdN"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aa0-H4-x6S" firstAttribute="top" secondItem="qFb-L3-yZa" secondAttribute="bottom" id="1de-Po-yE9"/>
+                <constraint firstAttribute="bottom" secondItem="ct7-OR-d29" secondAttribute="bottom" id="9k3-EQ-bAz"/>
+                <constraint firstItem="qFb-L3-yZa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="BZA-8d-w9o"/>
+                <constraint firstItem="ct7-OR-d29" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ume-Bl-EfK"/>
+                <constraint firstItem="qFb-L3-yZa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Vdh-q5-Hqc"/>
+                <constraint firstAttribute="trailing" secondItem="ct7-OR-d29" secondAttribute="trailing" id="Vu6-5D-KAR"/>
+                <constraint firstItem="ct7-OR-d29" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="i5P-Uk-t7p"/>
+                <constraint firstItem="aa0-H4-x6S" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="laX-pO-Ssw"/>
+                <constraint firstAttribute="trailing" secondItem="qFb-L3-yZa" secondAttribute="trailing" constant="90" id="mv3-2e-cWj"/>
+                <constraint firstAttribute="trailing" secondItem="aa0-H4-x6S" secondAttribute="trailing" constant="90" id="pi9-gG-Nc7"/>
+                <constraint firstAttribute="bottom" secondItem="aa0-H4-x6S" secondAttribute="bottom" id="yAQ-UR-YbD"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="backView" destination="ct7-OR-d29" id="EtM-7g-NwE"/>
+                <outlet property="tableView" destination="aa0-H4-x6S" id="DPM-TE-Te1"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="74.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="side_menu_background" width="1150" height="641"/>
+    </resources>
+</document>

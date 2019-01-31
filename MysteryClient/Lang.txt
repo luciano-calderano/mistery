@@ -1,0 +1,75 @@
+yes=Si
+no=No
+cancel=Annulla
+
+user=Username
+pass=Password
+signIn=Login
+signUp=Iscriviti
+passForg=Problemi di accesso?
+memoCred=Memorizza le credenziali
+
+menu=Menu
+home=Home
+incarichi=Incarichi
+
+profile=Profile
+recuperaPass=Recupera password
+
+jobDesc=Descrizione
+jobAtch=Allegati
+jobSpre=Rimuovi prenotazione
+jobDate=Cambia data
+jobCont=Continua compilazione
+jobTick=Apri un ticket
+
+timerStart=Sto per entrare nel punto vendita da verificare
+timerStop=Ho finito la verifica
+
+exeJob=Può essere fatto dal $1 al $2
+prenot=Hai prenotato per
+rifNum=Riferimento
+verIni=Inizio incarico
+verEnd=Fine incarico
+
+learning=Vai al learning
+kpiInit=Compila incarico
+kpiIrre=Ricompila incarico
+kpiCont=Continua compilazione
+cancel=Annulla
+
+jobStarted=Sei riuscito a svolgere l'incarico?
+jobNotDone=Inserisci il motivo per cui non hai potuto svolgerlo
+jobStartTime=Inserisci data e ora di inizio dell'incarico
+jobSelAtch=Inserisci allegato
+jobSelAtchReq=Allegato obbligatorio
+
+question=Domanda
+instruct=Istruzioni
+insertText=Inserisci un testo
+atchRemove=Cancello l'allegato?
+
+note=Note
+noteReq=Nota obbligatoria
+back=Indietro
+next=Avanti
+lastPage=Invia il questionario
+
+error=Errore
+noValue=Selezionare un valore
+noNotes=Inserire una nota
+noAttch=Inserire un allegato
+uploadPic=Allegato richiesto
+picFromCam=Scatta una foto
+picFromGal=Carica dalla galleria
+
+jobFinal=Commento finale
+jobFinalTime=Ora di fine esecuzione
+readyToSend=Pronto per l'invio
+
+noDependency=Scenario non previsto
+noAtchTitle=L'allegato è obbligatorio.\nVuoi continuare?
+noAtchMsg=Premi [Si] se non riesci ad allegare il documento richiesto.\nLa verifica verrà impostata come Irregolare e dovrai inserire il documento mancante con il tuo computer entro i termini.
+
+
+

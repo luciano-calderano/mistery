@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="adJ-sP-hVP">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Web Page-->
+        <scene sceneID="xJH-Oa-3v3">
+            <objects>
+                <viewController storyboardIdentifier="WebPage" id="adJ-sP-hVP" customClass="WebPage" customModule="MysteryClient" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sGi-ru-2RN"/>
+                        <viewControllerLayoutGuide type="bottom" id="KCU-Kf-66O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7sz-Gz-G3q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgE-AS-Fsa" customClass="HeaderContainerView" customModule="MysteryClient" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="20" width="375" height="55"/>
+                                <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="CJv-Am-iDu"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Mystey Client"/>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="sxImage" value="ico.back"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="Fe2-an-Djh">
+                                <rect key="frame" x="0.0" y="75" width="375" height="592"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TgE-AS-Fsa" secondAttribute="trailing" id="4Ys-Df-Uyr"/>
+                            <constraint firstAttribute="trailing" secondItem="Fe2-an-Djh" secondAttribute="trailing" id="8fQ-9m-ByI"/>
+                            <constraint firstItem="Fe2-an-Djh" firstAttribute="leading" secondItem="7sz-Gz-G3q" secondAttribute="leading" id="ERW-OQ-HeZ"/>
+                            <constraint firstItem="Fe2-an-Djh" firstAttribute="top" secondItem="TgE-AS-Fsa" secondAttribute="bottom" id="c5p-Lm-UoG"/>
+                            <constraint firstItem="TgE-AS-Fsa" firstAttribute="leading" secondItem="7sz-Gz-G3q" secondAttribute="leading" id="oPh-1e-Mwo"/>
+                            <constraint firstItem="TgE-AS-Fsa" firstAttribute="top" secondItem="sGi-ru-2RN" secondAttribute="bottom" id="wJz-Lo-lbM"/>
+                            <constraint firstItem="KCU-Kf-66O" firstAttribute="top" secondItem="Fe2-an-Djh" secondAttribute="bottom" id="xNn-eh-HT4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="container" destination="Fe2-an-Djh" id="3pj-x3-IBl"/>
+                        <outlet property="header" destination="TgE-AS-Fsa" id="e6Z-7Y-NnN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eAd-fF-g1i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29.600000000000001" y="-74.212893553223395"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back" width="1440" height="2559"/>
+        <image name="ico.back" width="128" height="128"/>
+    </resources>
+</document>
