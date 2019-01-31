@@ -1,0 +1,6 @@
+framework module LcLib {
+  umbrella header "LcLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
