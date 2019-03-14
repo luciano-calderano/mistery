@@ -10,7 +10,7 @@ import Foundation
 
 struct JobResult {
     var id = 0
-    var estimate_date = "" // Date [aaaa-mm-dd]
+//    var estimate_date = "" // Date [aaaa-mm-dd]
     var compiled = 0 // Boolean [0/1]
     var compilation_date = "" // Date and Time [aaaa-mm-dd hh:mm:ss]
     var updated = 0 // Boolean [0/1]

@@ -22,7 +22,7 @@ import Foundation
 import Alamofire
 
 class MYHttp {
-    static let printJson = false
+    static let printJson = true
     
     private var json = JsonDict()    
     private var type: HTTPMethod!

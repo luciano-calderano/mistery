@@ -27,6 +27,7 @@ timerStart=Sto per entrare nel punto vendita da verificare
 timerStop=Ho finito la verifica
 
 exeJob=Può essere fatto dal $1 al $2
+detJobTime=Dettaglio orario
 prenot=Hai prenotato per
 rifNum=Riferimento
 verIni=Inizio incarico

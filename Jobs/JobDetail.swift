@@ -107,7 +107,7 @@ class JobDetail: MYViewController {
                 loadAndShowResult()
                 return
             }
-            Current.result.estimate_date = Date().toString(withFormat: Config.DateFmt.DataJson)
+//            Current.result.estimate_date = Date().toString(withFormat: Config.DateFmt.DataJson)
             MYResult.shared.saveCurrentResult()
         }
         
@@ -207,6 +207,7 @@ class JobDetail: MYViewController {
 
         infoLabel.text =
             executionDate +
+            Lng("detJobTime") + ": \(Current.job.details)\n" +
             Lng("prenot") + ": \(Current.job.booking_date.toString(withFormat: dataOutput))\n" +
             Lng("rifNum") + ": \(Current.job.reference)\n" +
             Lng("verIni") + ": \(verIni)\n" +  Lng("verEnd") + ": \(verFin)"

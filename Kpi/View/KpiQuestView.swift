@@ -53,7 +53,6 @@ class KpiQuestView: KpiBaseView {
 
         noteIrregularLabel.text = currentKpi.result.irregular_note
         updateNoteTitle(note_required: currentKpi.note_required)
-        print(currentKpi.attachment_required)
         updateAtchTitle(atch_required: currentKpi.attachment_required)
 
         kpiNote.text = currentResult.notes

@@ -17,6 +17,7 @@ class KpiInitView: KpiBaseView {
     @IBOutlet private var jobNotDoneReason: MYTextField!
     @IBOutlet private var okButton: MYButton!
     @IBOutlet private var noButton: MYButton!
+    @IBOutlet private var atchButton: MYButton!
     @IBOutlet private var datePicker: UIDatePicker!
 
     override func awakeFromNib() {
@@ -31,6 +32,7 @@ class KpiInitView: KpiBaseView {
         super.didMoveToSuperview()
         let curJob = Current.job
         var curRes = Current.result
+        atchButton.layer.cornerRadius = atchButton.frame.size.height / 2
         
         if curRes.execution_date.isEmpty, let d = curJob.execution_date {
             curRes.execution_date = d.toString(withFormat: Config.DateFmt.DataJson)
@@ -66,13 +68,27 @@ class KpiInitView: KpiBaseView {
     
     @IBAction func okTapped () {
         undoneView.isHidden = true
+        atchButton.isHidden = undoneView.isHidden
         okButton.backgroundColor = UIColor.white
         noButton.backgroundColor = UIColor.lightGray
     }
     
     @IBAction func noTapped () {
         undoneView.isHidden = false
+        atchButton.isHidden = undoneView.isHidden
         okButton.backgroundColor = UIColor.lightGray
         noButton.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func atchTapped () {
+        let  kpiAtch = KpiAtch(mainViewCtrl: mainVC)
+        kpiAtch.delegate = self
+        kpiAtch.showArchSelection()
+    }
+}
+
+extension KpiInitView: KpiAtchDelegate {
+    func kpiAtchSelectedImage(withData data: Data) {
+        print ("...")
     }
 }

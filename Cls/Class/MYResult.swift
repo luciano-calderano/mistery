@@ -21,7 +21,7 @@ class MYResult {
         }
 
         result.id                     = dict.int("id")
-        result.estimate_date          = dict.string("estimate_date")
+//        result.estimate_date          = dict.string("estimate_date")
         result.compiled               = dict.int("compiled")
         result.compilation_date       = dict.string("compilation_date")
         result.updated                = dict.int("updated")
