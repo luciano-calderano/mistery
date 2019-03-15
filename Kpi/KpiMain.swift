@@ -132,11 +132,14 @@ class KpiMain: MYViewController {
     
     private func nextKpi () {
         var idx = Current.job.kpis.count
-
         defer {
             let vc = KpiMain.Instance()
             vc.currentIndex = idx
             navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        if kpiView.kpiIndex < 0 { // Incarico non svolto
+            return
         }
         
         let lastKpi = Current.job.kpis.count - 1

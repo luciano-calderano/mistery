@@ -71,6 +71,7 @@ class KpiInitView: KpiBaseView {
         atchButton.isHidden = undoneView.isHidden
         okButton.backgroundColor = UIColor.white
         noButton.backgroundColor = UIColor.lightGray
+        kpiIndex = 0
     }
     
     @IBAction func noTapped () {
@@ -78,6 +79,7 @@ class KpiInitView: KpiBaseView {
         atchButton.isHidden = undoneView.isHidden
         okButton.backgroundColor = UIColor.lightGray
         noButton.backgroundColor = UIColor.white
+        kpiIndex = -1
     }
     
     @IBAction func atchTapped () {
@@ -89,6 +91,22 @@ class KpiInitView: KpiBaseView {
 
 extension KpiInitView: KpiAtchDelegate {
     func kpiAtchSelectedImage(withData data: Data) {
-        print ("...")
+        for i in 0..<Current.job.kpis.count {
+            let kpi = Current.job.kpis[i]
+            print(kpi.type)
+            if kpi.type == "geophoto" {
+                currentResult = Current.result.results[i]
+                break
+            }
+        }
+        
+        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
+        let file = Current.jobPath + currentResult.attachment
+        do {
+            try data.write(to: URL(fileURLWithPath: file))
+        } catch {
+            print("errore salvataggio file " + currentResult.attachment)
+            currentResult.attachment = "";
+        }
     }
 }
