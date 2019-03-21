@@ -13,7 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="KpiInitView" customModule="MysteryClient" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="440"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="396"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXb-2e-aOS" userLabel="View buttons">
@@ -110,7 +110,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1F-wC-16V" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
-                    <rect key="frame" x="60" y="357" width="255" height="46"/>
+                    <rect key="frame" x="16" y="339" width="343" height="46"/>
                     <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="BN3-Hi-toY"/>
@@ -125,19 +125,19 @@
             </subviews>
             <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="C1F-wC-16V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="60" id="3N8-3w-s82"/>
+                <constraint firstItem="C1F-wC-16V" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="3N8-3w-s82"/>
                 <constraint firstItem="xJ0-LQ-mJ5" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="5BZ-Pi-HDe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Y3n-0r-Fbz" secondAttribute="trailing" constant="16" id="CLX-JD-oGP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TeS-13-eYm" secondAttribute="trailing" constant="16" id="DTH-Ws-Ghe"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xJ0-LQ-mJ5" secondAttribute="trailing" constant="8" id="Idc-Ke-8lG"/>
                 <constraint firstItem="BXb-2e-aOS" firstAttribute="top" secondItem="cfI-Hv-RrF" secondAttribute="bottom" constant="7" id="P6h-Nr-unT"/>
-                <constraint firstItem="C1F-wC-16V" firstAttribute="top" secondItem="TeS-13-eYm" secondAttribute="bottom" constant="30" id="QBZ-y5-C9B"/>
+                <constraint firstItem="C1F-wC-16V" firstAttribute="top" secondItem="TeS-13-eYm" secondAttribute="bottom" constant="12" id="QBZ-y5-C9B"/>
                 <constraint firstItem="Y3n-0r-Fbz" firstAttribute="top" secondItem="xJ0-LQ-mJ5" secondAttribute="bottom" constant="12" id="aih-ct-OI1"/>
                 <constraint firstItem="TeS-13-eYm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bRa-3y-0M9"/>
                 <constraint firstItem="Y3n-0r-Fbz" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="bcl-GI-MvP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BXb-2e-aOS" secondAttribute="trailing" constant="8" id="cWh-IO-WDf"/>
                 <constraint firstItem="BXb-2e-aOS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="dFz-Jq-5ck"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="C1F-wC-16V" secondAttribute="trailing" constant="60" id="gXO-WD-USq"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="C1F-wC-16V" secondAttribute="trailing" constant="16" id="gXO-WD-USq"/>
                 <constraint firstItem="cfI-Hv-RrF" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="11" id="h0z-Oh-muL"/>
                 <constraint firstItem="cfI-Hv-RrF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="qrt-Td-uSa"/>
                 <constraint firstItem="TeS-13-eYm" firstAttribute="top" secondItem="Y3n-0r-Fbz" secondAttribute="bottom" constant="1" id="zcJ-IQ-1Bh"/>
@@ -153,7 +153,7 @@
                 <outlet property="okButton" destination="bND-Ah-HJr" id="kde-gK-GOW"/>
                 <outlet property="undoneView" destination="xJ0-LQ-mJ5" id="jhM-Jg-c65"/>
             </connections>
-            <point key="canvasLocation" x="32.799999999999997" y="-67.466266866566727"/>
+            <point key="canvasLocation" x="32.799999999999997" y="-87.256371814092958"/>
         </view>
     </objects>
 </document>

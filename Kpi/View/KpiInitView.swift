@@ -19,6 +19,8 @@ class KpiInitView: KpiBaseView {
     @IBOutlet private var noButton: MYButton!
     @IBOutlet private var atchButton: MYButton!
     @IBOutlet private var datePicker: UIDatePicker!
+    
+    private var geoPhotoKpi = -1
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,6 +28,14 @@ class KpiInitView: KpiBaseView {
             btn?.layer.cornerRadius = (btn?.frame.size.height)! / 2
         }
         okTapped()
+        jobNotDoneReason.delegate = self
+        for i in 0..<Current.job.kpis.count {
+            let kpi = Current.job.kpis[i]
+            if kpi.type == "geophoto" {
+                geoPhotoKpi = i
+                break
+            }
+        }
     }
     
     override func didMoveToSuperview() {
@@ -76,7 +86,7 @@ class KpiInitView: KpiBaseView {
     
     @IBAction func noTapped () {
         undoneView.isHidden = false
-        atchButton.isHidden = undoneView.isHidden
+        atchButton.isHidden = geoPhotoKpi < 0 ? true : undoneView.isHidden
         okButton.backgroundColor = UIColor.lightGray
         noButton.backgroundColor = UIColor.white
         kpiIndex = -1
@@ -89,17 +99,20 @@ class KpiInitView: KpiBaseView {
     }
 }
 
+extension KpiInitView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 extension KpiInitView: KpiAtchDelegate {
     func kpiAtchSelectedImage(withData data: Data) {
-        for i in 0..<Current.job.kpis.count {
-            let kpi = Current.job.kpis[i]
-            print(kpi.type)
-            if kpi.type == "geophoto" {
-                currentResult = Current.result.results[i]
-                break
-            }
+        if geoPhotoKpi < 0 {
+            return
         }
         
+        currentResult = Current.result.results[geoPhotoKpi]
         currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
         let file = Current.jobPath + currentResult.attachment
         do {

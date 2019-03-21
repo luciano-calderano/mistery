@@ -49,7 +49,7 @@ class KpiQuestView: KpiBaseView {
         kpiTitle.text = currentKpi.factor
         kpiQuestion.text = currentKpi.standard
         kpiInstructions.text = currentKpi.instructions
-        kpiAtchBtn.isHidden = !currentKpi.attachment && !currentKpi.attachment_required
+        kpiAtchBtn.isHidden = currentKpi.attachment == false && currentKpi.attachment_required == false
 
         noteIrregularLabel.text = currentKpi.result.irregular_note
         updateNoteTitle(note_required: currentKpi.note_required)
@@ -240,7 +240,7 @@ class KpiQuestView: KpiBaseView {
         noteLabel.text = (note_required) ? Lng("noteReq") : Lng("note")
     }
     private func updateAtchTitle (atch_required: Bool) {
-        kpiAtchBtn.setTitle((atch_required) ? Lng("jobSelAtch") : Lng("jobSelAtchReq"), for: .normal)
+        kpiAtchBtn.setTitle(atch_required ? Lng("jobSelAtchReq") : Lng("jobSelAtch"), for: .normal)
     }
 }
 
