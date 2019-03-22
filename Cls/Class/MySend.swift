@@ -8,31 +8,23 @@
 
 import UIKit
 
-class SendJob {
-    class func send (dict: JsonDict) -> String? {
-        let sendJob = SendJob()
-        let result = sendJob.createZipFileWithDict(dict)
-        return result
+class MySend {
+    func sendResult (fromVC ctrl: UIViewController) {
+        if let error = start() {
+            ctrl.alert ("Errore nell'invio dell'incarico", message: error, okBlock: nil)
+            return
+        }
+        ctrl.alert (Lng("readyToSend"), message: "", okBlock: { (ready) in
+            ctrl.navigationController!.popToRootViewController(animated: true)
+        })
     }
-//    class func send (dict: JsonDict) -> Bool {
-//        let sendJob = SendJob()
-//        let result = sendJob.createZipFileWithDict(dict)
-//        if result.isEmpty {
-//            return true
-//        }
-//        if let vc = UIApplication.shared.keyWindow!.rootViewController {
-//            vc.alert ("Errore nell'invio dell'incarico", message: result, okBlock: nil)
-//        }
-//        return false
-//    }
-
     
-    func createZipFileWithDict (_ dict: JsonDict) -> String? {
+    private func start() -> String? {
         let fm = FileManager.default
         var jsonData = Data()
         
         do {
-            jsonData = try JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+            jsonData = try JSONSerialization.data(withJSONObject: MYResult.resultDict, options: .prettyPrinted)
         } catch {
             return "JSONSerialization: error"
         }

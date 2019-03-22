@@ -11,32 +11,8 @@ import Foundation
 class MYJob {
     static let shared = MYJob()
     
-//    init() {
-//        let fm = FileManager.default
-//        if fm.fileExists(atPath: Config.File.jobsPlist) == false {
-//            clearJobs()
-//        }
-//    }
-//
-//    private func createJobPath () {
-//        do {
-//            try FileManager.default.createDirectory(atPath: Config.Path.jobs,
-//                                   withIntermediateDirectories: true,
-//                                   attributes: nil)
-//        } catch let error as NSError {
-//            print("Directory error: \(error.debugDescription)")
-//        }
-//    }
-    
     func clearJobs () {
         _ = JsonDict().saveToFile(Config.File.jobsPlist)
-//
-//        do {
-//            try FileManager.default.removeItem(atPath: Config.Path.jobs)
-//            createJobPath()
-//        } catch let error as NSError {
-//            print("Directory error: \(error.debugDescription)")
-//        }
     }
     
     func loadJobs() -> [JsonDict]? {
@@ -176,9 +152,4 @@ class MYJob {
         }
         return array
     }
-    
-//    private func getFileName (id: Int) -> String {
-//        let fileName = Config.Path.jobs + "\(id)." + Config.File.plist
-//        return fileName
-//    }
 }

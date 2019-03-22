@@ -95,7 +95,7 @@ class KpiMain: MYViewController {
         case .next:
             nextKpi()
         case .last:
-            sendJob()
+            MySend().sendResult(fromVC: self)
         case .errComment:
             let max = Current.job.comment_max > 0 ? Current.job.comment_max : 999
             let s = "La lunghezza dell commento deve essere tra \(Current.job.comment_min) e \(max) caratteri"
@@ -110,17 +110,6 @@ class KpiMain: MYViewController {
         case .err:
             break
         }
-    }
-    
-    private func sendJob () {
-        if let error = SendJob.send(dict: MYResult.resultDict) {
-            alert ("Errore nell'invio dell'incarico", message: error, okBlock: nil)
-            return
-        }
-        alert (Lng("readyToSend"), message: "", okBlock: {
-            (ready) in
-            self.navigationController!.popToRootViewController(animated: true)
-        })
     }
     
     private func showPageNum() {
