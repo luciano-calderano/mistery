@@ -242,7 +242,7 @@ class JobDetail: MYViewController {
         strtBtn.backgroundColor = .lightGray
         strtBtn.setTitleColor(UIColor.black, for: .normal);
 
-        if Current.job.irregular == false {
+        if Current.job.irregular {
             return
         }
         

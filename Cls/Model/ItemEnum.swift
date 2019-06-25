@@ -17,7 +17,7 @@ enum MenuItemEnum: String {
     case cerc = "Stiamo cercando"
     case news = "Mystery News"
     case lear = "Learning"
-    case cont = "Contattaci"
+    case cont = "Contattaci/Invia allegati"
     case logout = "Logout"
     case _none = ""
 }
