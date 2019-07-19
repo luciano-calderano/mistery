@@ -33,7 +33,7 @@ rifNum=Riferimento
 verIni=Inizio incarico
 verEnd=Fine incarico
 
-learning=Vai al learning
+learning=Vai alla formazione
 kpiInit=Compila incarico
 kpiIrre=Ricompila incarico
 kpiCont=Continua compilazione

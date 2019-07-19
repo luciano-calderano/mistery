@@ -16,7 +16,7 @@ enum MenuItemEnum: String {
     case prof = "Profilo"
     case cerc = "Stiamo cercando"
     case news = "Mystery News"
-    case lear = "Learning"
+    case lear = "Formazione"
     case cont = "Contattaci/Invia allegati"
     case logout = "Logout"
     case _none = ""
