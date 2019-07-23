@@ -65,6 +65,21 @@ class JobDetail: MYViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if Current.job.learning_done == true {
+            let wheel = MYWheel()
+            wheel.start(view)
+            let js = JobSelected()
+            js.load(Current.job, completion: { (error, msg) in
+                wheel.stop()
+                if (error.isEmpty) {
+                    self.loadAndShowResult()
+                } else {
+                    self.alert(error, message: msg, okBlock: nil)
+                }
+            })
+            return
+        }
+
         loadAndShowResult()
     }
     
@@ -102,8 +117,8 @@ class JobDetail: MYViewController {
         if Current.result.execution_date.isEmpty {
             guard Current.job.learning_done else {
                 openWeb(type: .none, urlPage:  Current.job.learning_url)
-                Current.job.learning_done = true
-                MYResult.shared.saveCurrentResult()
+//                Current.job.learning_done = true
+//                MYResult.shared.saveCurrentResult()
                 loadAndShowResult()
                 return
             }
@@ -168,18 +183,16 @@ class JobDetail: MYViewController {
     
     private func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined, .restricted, .denied:
-                print("No access")
-            case .authorizedAlways, .authorizedWhenInUse:
+            let lm = CLLocationManager.authorizationStatus()
+            if  lm == .authorizedAlways ||
+                lm == .authorizedWhenInUse {
                 MYGps.shared.start { (coo) in
                     print(coo)
                 }
-                return
             }
-        } else {
-            print("Location services are not enabled")
+            return
         }
+        
         alert("Attenzione",
               message: "La geolocalizzazione deve essere attivate per effeturare le verifiche.",
               cancelBlock: nil) { (action) in

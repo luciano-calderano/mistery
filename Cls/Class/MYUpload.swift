@@ -71,7 +71,7 @@ class MYUpload {
                     (response) in
                     if let JSON = response.result.value {
                         print("Upload: Response.JSON: \(JSON)")
-                        MYZip.removeZipFile(url)
+                        MYZip.removeZipFile(zipUrl)
                         self.done(id: jobId)
                         return
                     }

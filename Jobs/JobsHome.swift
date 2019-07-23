@@ -136,7 +136,7 @@ extension JobsHome: JobsHomeCellDelegate {
 // MARK:- Selected job -
 
 extension JobsHome {
-    private func selectedJob (_ job: Job) {
+    func selectedJob (_ job: Job) {
         let wheel = MYWheel()
         wheel.start(view)
         let js = JobSelected()

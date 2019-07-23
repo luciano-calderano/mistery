@@ -15,7 +15,7 @@ class WebPage: MYViewController {
         case register = "login/register?app=1"
         
         case profile = "mystery/profile"
-        case storico = "checking/validated"
+        case storico = "checking/executed"
         case find = "checking/finder"
         case cercando = "mystery/communications"
         case news = "mystery/news"

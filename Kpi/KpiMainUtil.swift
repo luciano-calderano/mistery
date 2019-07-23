@@ -66,7 +66,7 @@ class InvalidKpi {
     }
     
     private class func fixValuation (isValid: Bool, dep: Job.Kpi.Valuation.Dependency) {
-        if let idx = kpiKeyList.index(of: dep.key) {
+        if let idx = kpiKeyList.firstIndex(of: dep.key) {
             Current.job.kpis[idx].isValid = isValid
             
             let kpiResult = Current.result.results[idx]

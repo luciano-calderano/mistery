@@ -105,7 +105,7 @@ extension SubCheckBox: UITableViewDelegate {
         let item = currentKpi.valuations[indexPath.row]
         let id = String(item.id)
         if selectedId.contains(id) {
-            let idx = selectedId.index(of: id)
+            let idx = selectedId.firstIndex(of: id)
             selectedId.remove(at: idx!)
         }
         else {

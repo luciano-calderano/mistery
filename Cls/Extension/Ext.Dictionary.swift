@@ -32,7 +32,6 @@ extension Dictionary {
         catch let error as NSError {
             fatalError("Error saving to file: \(error.localizedDescription)")
         }
-        return false
     }
 }
 
