@@ -95,7 +95,7 @@ class MYResult {
         
         _ = MYResult.resultDict.saveToFile(Current.resultFile)
     }
-    
+        
     func removeResultWithId (_ id: Int) {
         do {
             try? FileManager.default.removeItem(atPath: Current.resultFile)

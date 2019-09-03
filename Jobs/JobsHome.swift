@@ -20,12 +20,15 @@ class JobsHome: MYViewController {
         return refreshControl
     }()
     
+    private var zipFilesList = [URL]()
+
     @IBOutlet private var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.addSubview(refreshControl)
+        getListZip()
 //        MYJob.shared.clearJobs()
     }
     
@@ -148,5 +151,41 @@ extension JobsHome {
                 self.alert(error, message: msg, okBlock: nil)
             }
         })
+    }
+}
+
+extension JobsHome {
+    private func getListZip () {
+        do {
+            let zipPath = URL(string: Config.Path.zip)!
+            let zipFiles = try FileManager.default.contentsOfDirectory(at: zipPath,
+                                                                       includingPropertiesForKeys: nil,
+                                                                       options:[])
+            for zipUrl in zipFiles {
+                if zipUrl.pathExtension == Config.File.zip {
+                    zipFilesList.append(zipUrl)
+                }
+            }
+        }
+        catch {
+            print("getListZip: error")
+        }
+        if zipFilesList.count == 0 {
+            return
+        }
+        
+        alert("Attenzione",
+              message: "Ci sono degli icarichi de trasmettere.\nLi vuoi inviare adesso ?",
+              cancelBlock: nil) {
+                (action) in
+                self.openListZip()
+        }
+    }
+    
+    private func openListZip() {
+        let ctrl = UploadVC.Instance()
+        navigationController?.show(ctrl, sender: self)
+        ctrl.title = "Upload"
+        ctrl.dataArray = zipFilesList
     }
 }

@@ -32,6 +32,10 @@ class User: NSObject {
         }
     }
     
+    func getUsername() -> String {
+        return userdata.user
+    }
+    
     override init() {
         super.init()
         if let data = UserDefaults.standard.value(forKey: keyPlist) as? Data {
@@ -120,4 +124,4 @@ class User: NSObject {
             failure(code, error)
         }
     }
-}
+ }

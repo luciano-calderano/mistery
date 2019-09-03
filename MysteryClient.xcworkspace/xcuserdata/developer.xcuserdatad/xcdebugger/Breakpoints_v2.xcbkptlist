@@ -9,13 +9,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Jobs/JobDetail.swift"
-            timestampString = "585567056.854944"
+            filePath = "Cls/Class/MySend.swift"
+            timestampString = "589117588.446802"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "atchTapped()"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "startUploadIncarico()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cls/Class/MySend.swift"
+            timestampString = "589117588.447263"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "startUploadIncarico()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -25,7 +25,7 @@ class KpiBaseView: UIView {
     var currentResult: JobResult.KpiResult!
     var kpiIndex = 0 {
         didSet {
-            if kpiIndex < 0 {
+            if kpiIndex < 0 || Current.job.kpis.count == 0 {
                 return
             }
             currentKpi = Current.job.kpis[kpiIndex]

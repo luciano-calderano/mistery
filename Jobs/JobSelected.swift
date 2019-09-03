@@ -76,17 +76,19 @@ class JobSelected {
     
     private func createResultWithJob () {
         Current.result.id = Current.job.id
-        Current.result.results.removeAll()
-        for kpi in Current.job.kpis {
-            let kpiResult = kpi.result
-            let result = JobResult.KpiResult()
-            result.kpi_id = kpiResult.id
-            result.value = kpiResult.value
-            result.notes = kpiResult.notes
-            result.attachment = kpiResult.attachment
-            Current.result.results.append(result)
-            if kpiResult.url.isEmpty == false {
-                downloadAtch(url: kpiResult.url, kpiId: kpi.id)
+        Current.result = MYResult.shared.loadCurrentResult()
+        if Current.result.results.count == 0 {
+            for kpi in Current.job.kpis {
+                let kpiResult = kpi.result
+                let result = JobResult.KpiResult()
+                result.kpi_id = kpiResult.id
+                result.value = kpiResult.value
+                result.notes = kpiResult.notes
+                result.attachment = kpiResult.attachment
+                Current.result.results.append(result)
+                if kpiResult.url.isEmpty == false {
+                    downloadAtch(url: kpiResult.url, kpiId: kpi.id)
+                }
             }
         }
         MYResult.shared.saveCurrentResult()

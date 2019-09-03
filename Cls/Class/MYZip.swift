@@ -19,13 +19,15 @@ class MYZip {
         return FileManager.default.fileExists(atPath: file)
     }
 
-    class func removeZipFile (_ url: URL) {
+    class func removeZipFile (_ url: URL) -> Bool {
         do {
             try FileManager.default.removeItem(at: url)
+            return true
         }
         catch  {
             print("Adding entry to ZIP archive failed with error:\(error)")
         }
+        return false
     }
     class func zipFiles (_ files: [URL], jobId: Int) -> Bool {
         let zipFile = URL(fileURLWithPath: MYZip.getZipFilePath(id: jobId))
@@ -41,5 +43,20 @@ class MYZip {
             }
         }
         return true
+    }
+    class func zipLogFile (_ file: String) -> String {
+        let urlFile = URL(fileURLWithPath: file)
+        let zipUrl = URL(fileURLWithPath: file + ".zip")
+        try? FileManager.default.removeItem(at: zipUrl)
+        guard let archive = Archive(url: zipUrl, accessMode: .create) else {
+            return ""
+        }
+        do {
+            try archive.addEntry(with: urlFile.lastPathComponent, relativeTo: zipUrl.deletingLastPathComponent())
+            return zipUrl.absoluteString
+        } catch {
+            print("Adding entry to ZIP archive failed with error:\(error)")
+            return ""
+        }
     }
 }
