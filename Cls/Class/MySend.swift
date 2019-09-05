@@ -11,19 +11,18 @@ import Alamofire
 import UIKit
 
 class MySend {
+    var onTerminate: ((String, String)->())?
+    
     private var textLog = ""
     private let jobId = String(Current.job.id)
-    private let wheel = MYWheel()
-
-    private var mainVC: UIViewController!
+    
     private func appendLog (_ txt: String) {
         textLog += Date().toString(withFormat: Config.DateFmt.DataOraJson) + " -> " + txt + "\n"
     }
     
-    func sendResult (fromVC ctrl: UIViewController) {
-        mainVC = ctrl
+    func sendResult () {
+        MYHud.show()
         textLog = ""
-        wheel.start(mainVC.view)
         appendLog("Start")
 
         if createZip() {
@@ -32,6 +31,10 @@ class MySend {
         else {
             errore()
         }
+    }
+    func uploadZipResult () {
+        MYHud.show()
+        startUpload()
     }
     
     private func createZip() -> Bool {
@@ -167,17 +170,15 @@ class MySend {
     }
     
     private func done () {
-        mainVC.alert("Incarico \(jobId)", message: "Inviato con successo")
-        terminate()
+        terminate("Incarico \(jobId)", "Inviato con successo")
     }
     private func errore () {
-        mainVC.alert("Errore incarico \(jobId)", message: textLog)
-        terminate()
+        terminate("Errore incarico \(jobId)", textLog)
     }
     
-    private func terminate () {
-        wheel.stop()
-        mainVC.navigationController?.popToRootViewController(animated: true)
+    private func terminate (_ title: String, _ msg: String) {
+        MYHud.hide()
+        onTerminate?(title, msg)
     }
 }
 

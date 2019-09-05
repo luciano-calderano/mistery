@@ -79,6 +79,7 @@
 		8B0CA1E9212C07650016B90A /* MYUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0CA1E8212C07650016B90A /* MYUpload.swift */; };
 		8B61900C22FACFD800A0748E /* UploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B61900B22FACFD800A0748E /* UploadVC.swift */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
+		8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
 		8BF04F19214A9AD500ADF6E0 /* JobDetailNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */; };
 /* End PBXBuildFile section */
 
@@ -172,6 +173,7 @@
 		8B0CA1E8212C07650016B90A /* MYUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYUpload.swift; sourceTree = "<group>"; };
 		8B61900B22FACFD800A0748E /* UploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVC.swift; sourceTree = "<group>"; };
 		8BAE0892211C432600911B4E /* MYGps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYGps.swift; sourceTree = "<group>"; };
+		8BAE9F57231EAE730083DF5C /* MYHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYHud.swift; sourceTree = "<group>"; };
 		8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailNotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,6 +256,7 @@
 				04B1BAD41F459D3A007A1B64 /* MYHttp.swift */,
 				8B0CA1E8212C07650016B90A /* MYUpload.swift */,
 				04461A271EFA8558008CD1E2 /* MYWheel.swift */,
+				8BAE9F57231EAE730083DF5C /* MYHud.swift */,
 				04A88E7A1F13D33800FBAE54 /* MYKeyboard.swift */,
 				048C44821F5B161C00E836C0 /* MYMaps.swift */,
 				8BAE0892211C432600911B4E /* MYGps.swift */,
@@ -620,6 +623,7 @@
 				4B30C200207F59270018BD6C /* KpiMain.swift in Sources */,
 				04A2109A1F03A82A00D1480C /* JobDetailDesc.swift in Sources */,
 				4B30C1F9207F59270018BD6C /* KpiMainUtil.swift in Sources */,
+				8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */,
 				048C44871F5B183D00E836C0 /* ResultStruct.swift in Sources */,
 				8B61900C22FACFD800A0748E /* UploadVC.swift in Sources */,
 				4B30C1F8207F59270018BD6C /* KpiBaseView.swift in Sources */,

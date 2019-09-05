@@ -77,10 +77,9 @@ class KpiAtch: NSObject {
         if type == .camera {
             picker.cameraCaptureMode = .photo
         }
-        let wheel = MYWheel()
-        wheel.start(mainVC.view)
+        MYHud.show()
         mainVC.present(picker, animated: true) {
-            wheel.stop()
+            MYHud.hide()
         }
     }
     

@@ -66,11 +66,10 @@ class JobDetail: MYViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Current.job.learning_done == true {
-            let wheel = MYWheel()
-            wheel.start(view)
+            MYHud.show()
             let js = JobSelected()
             js.load(Current.job, completion: { (error, msg) in
-                wheel.stop()
+                MYHud.hide()
                 if (error.isEmpty) {
                     self.loadAndShowResult()
                 } else {
@@ -132,11 +131,10 @@ class JobDetail: MYViewController {
             present(ctrl, animated: true, completion: nil)
         }
         else {
-            let wheel = MYWheel()
-            wheel.start(view)
+            MYHud.show()
             let ctrl = KpiMain.Instance()
             navigationController?.show(ctrl, sender: self)
-            wheel.stop()
+            MYHud.hide()
         }
     }
     

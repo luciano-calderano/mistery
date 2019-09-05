@@ -48,7 +48,6 @@ class WebPage: MYViewController {
 
     var isSignUp = false;
     var page = ""    
-    private var myWheel = MYWheel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +63,7 @@ class WebPage: MYViewController {
         if page.isEmpty {
             return
         }
-        myWheel.start(container)
+        MYHud.show()
 
         if isSignUp {
             let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
@@ -92,7 +91,7 @@ class WebPage: MYViewController {
 
 extension WebPage: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        myWheel.stop()
+        MYHud.hide()
         alert("Errore", message: error.localizedDescription) {
             (result) in
             self.navigationController?.popViewController(animated: true)
@@ -100,7 +99,7 @@ extension WebPage: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        myWheel.stop()
+        MYHud.hide()
         webView.frame = container.bounds
         container.addSubview(webView)
     }

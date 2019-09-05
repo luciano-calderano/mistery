@@ -28,7 +28,6 @@ class JobsHome: MYViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.addSubview(refreshControl)
-        getListZip()
 //        MYJob.shared.clearJobs()
     }
     
@@ -46,11 +45,12 @@ class JobsHome: MYViewController {
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        headerViewDxTapped()
         refreshControl.endRefreshing()
+        headerViewDxTapped()
     }
     
     private func loadJobs () {
+        getListZip()
         func showJobsList (jobDictArray: [JsonDict]) {
             var jobsArray = [Job]()
             for dict in jobDictArray {
@@ -98,23 +98,31 @@ class JobsHome: MYViewController {
 //MARK: - UITableViewDataSource
 
 extension JobsHome: UITableViewDataSource {
-    func maxItemOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        return section == 0 ? dataArray.count : zipFilesList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 125
+        return indexPath.section == 0 ? 125 : 80
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = JobsHomeCell.dequeue(tableView, indexPath)
-        cell.delegate = self
-        cell.job = dataArray[indexPath.row] as? Job
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = JobsHomeCell.dequeue(tableView, indexPath)
+            cell.delegate = self
+            cell.job = dataArray[indexPath.row] as? Job
+            return cell
+        default:
+            let cell = UploadCell.dequeue(tableView, indexPath)
+            let url = zipFilesList[indexPath.row].deletingPathExtension()
+            cell.name.text = url.lastPathComponent
+            return cell
+        }
     }
 }
 
@@ -123,7 +131,25 @@ extension JobsHome: UITableViewDataSource {
 extension JobsHome: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedJob(dataArray[indexPath.row] as! Job)
+        switch indexPath.section {
+        case 0:
+            selectedJob(dataArray[indexPath.row] as! Job)
+        default:
+            let url = zipFilesList[indexPath.row].deletingPathExtension()
+            let jobId = Int(url.lastPathComponent)
+            if jobId == 0 {
+                return
+            }
+            Current.job.id = jobId!
+            let mySend = MySend()
+            mySend.onTerminate = {
+                (title, msg) in
+                self.alert(title, message: msg)
+                self.getListZip()
+                tableView.reloadData()
+            }
+            mySend.uploadZipResult()
+        }
     }
 }
 
@@ -140,11 +166,10 @@ extension JobsHome: JobsHomeCellDelegate {
 
 extension JobsHome {
     func selectedJob (_ job: Job) {
-        let wheel = MYWheel()
-        wheel.start(view)
+        MYHud.show()
         let js = JobSelected()
         js.load(job, completion: { (error, msg) in
-            wheel.stop()
+            MYHud.hide()
             if (error.isEmpty) {
                 self.navigationController?.show(JobDetail.Instance(), sender: self)
             } else {
@@ -156,6 +181,7 @@ extension JobsHome {
 
 extension JobsHome {
     private func getListZip () {
+        zipFilesList.removeAll()
         do {
             let zipPath = URL(string: Config.Path.zip)!
             let zipFiles = try FileManager.default.contentsOfDirectory(at: zipPath,
@@ -169,16 +195,6 @@ extension JobsHome {
         }
         catch {
             print("getListZip: error")
-        }
-        if zipFilesList.count == 0 {
-            return
-        }
-        
-        alert("Attenzione",
-              message: "Ci sono degli icarichi de trasmettere.\nLi vuoi inviare adesso ?",
-              cancelBlock: nil) {
-                (action) in
-                self.openListZip()
         }
     }
     

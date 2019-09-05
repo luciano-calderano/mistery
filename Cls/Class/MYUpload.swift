@@ -89,7 +89,6 @@ class MYUpload {
             return
         }
         
-
         Alamofire.upload(multipartFormData: {
             (formData) in
             formData.append(data,

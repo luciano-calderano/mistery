@@ -29,8 +29,6 @@ class MYHttp {
     private var apiUrl = ""
     private var header = true
     
-    private var myWheel:MYWheel?
-    
     init(_ httpType: MYHttpType, param: JsonDict, showWheel: Bool = true, hasHeader: Bool = true) {
         json = param
         header = hasHeader
@@ -43,8 +41,6 @@ class MYHttp {
             type = .post
             apiUrl = Config.Url.grant
         }
-        
-        self.startWheel(showWheel)
     }
     
     func load(ok: @escaping (JsonDict) -> (), KO: @escaping (String, String) -> ()) {
@@ -55,11 +51,12 @@ class MYHttp {
             print ("Auth: " + User.shared.token)
         }
         
+        MYHud.show()
         Alamofire.request(apiUrl,
                           method: type,
                           parameters: json,
                           headers: headers).responseString { response in
-                            self.startWheel(false)
+                            MYHud.hide()
                             let data = self.fixResponse(response)
                             if data.isValid {
                                 ok (data.dict)
@@ -125,19 +122,6 @@ class MYHttp {
     fileprivate func printJson (_ json: JsonDict) {
         if MYHttp.printJson {
             print("\n[ \(apiUrl) ]\n\(json)\n------------")
-        }
-    }
-    
-    fileprivate func startWheel(_ start: Bool, inView: UIView = UIApplication.shared.keyWindow!) {
-        if start {
-            myWheel = MYWheel()
-            myWheel?.start(inView)
-        }
-        else {
-            if let wheel = myWheel {
-                wheel.stop()
-                myWheel = nil
-            }
         }
     }
 }

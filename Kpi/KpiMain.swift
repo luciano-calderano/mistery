@@ -95,7 +95,14 @@ class KpiMain: MYViewController {
         case .next:
             nextKpi()
         case .last:
-            MySend().sendResult(fromVC: self)
+            let mySend = MySend()
+            mySend.onTerminate = {
+                (title, msg) in
+                self.alert(title, message: msg, okBlock: { (action) in
+                    self.navigationController?.popToRootViewController(animated: true)
+                })
+            }
+            mySend.sendResult()
         case .errComment:
             let max = Current.job.comment_max > 0 ? Current.job.comment_max : 999
             let s = "La lunghezza dell commento deve essere tra \(Current.job.comment_min) e \(max) caratteri"
