@@ -21,7 +21,6 @@ class MySend {
     }
     
     func sendResult () {
-        MYHud.show()
         textLog = ""
         appendLog("Start")
 
@@ -33,7 +32,6 @@ class MySend {
         }
     }
     func uploadZipResult () {
-        MYHud.show()
         startUpload()
     }
     
@@ -177,7 +175,6 @@ class MySend {
     }
     
     private func terminate (_ title: String, _ msg: String) {
-        MYHud.hide()
         onTerminate?(title, msg)
     }
 }

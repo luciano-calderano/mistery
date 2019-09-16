@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String
         if (appStoreVersion != currentVersion) {
-//            showAlert()
+            showAlert()
         }
     }
 

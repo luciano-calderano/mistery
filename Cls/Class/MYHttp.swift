@@ -29,7 +29,7 @@ class MYHttp {
     private var apiUrl = ""
     private var header = true
     
-    init(_ httpType: MYHttpType, param: JsonDict, showWheel: Bool = true, hasHeader: Bool = true) {
+    init(_ httpType: MYHttpType, param: JsonDict, hasHeader: Bool = true) {
         json = param
         header = hasHeader
         
@@ -51,12 +51,10 @@ class MYHttp {
             print ("Auth: " + User.shared.token)
         }
         
-        MYHud.show()
         Alamofire.request(apiUrl,
                           method: type,
                           parameters: json,
                           headers: headers).responseString { response in
-                            MYHud.hide()
                             let data = self.fixResponse(response)
                             if data.isValid {
                                 ok (data.dict)

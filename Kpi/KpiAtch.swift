@@ -97,17 +97,57 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let info = convertDict(info)
-        let imgKey = convertKey(UIImagePickerController.InfoKey.originalImage)
-        let assetKey = convertKey(UIImagePickerController.InfoKey.phAsset)
-        
-        guard let pickedImage = info[imgKey] as? UIImage else {
+        guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
+        
         var dat = Date()
-        if picker.sourceType != .camera, let asset = info[assetKey] as? PHAsset {
-            dat = asset.creationDate ?? Date();
-            currentCoordinateGps = asset.location?.coordinate ?? currentCoordinateGps
+        let asset = (info[UIImagePickerController.InfoKey.phAsset] as? PHAsset)
+        var coordinate = asset?.location?.coordinate ?? CLLocationCoordinate2D()
+        func readImageData(url: URL) {
+            if let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) {
+                let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)
+                if let dict = imageProperties as? [String: Any] {
+                    print(dict)
+                    if let iptc = dict["{IPTC}"] as? [String: Any] {
+                        if
+                            let date = iptc["DigitalCreationDate"] as? String,
+                            let time = iptc["DigitalCreationTime"] as? String {
+                            let datetime = date + time
+                            dat = datetime.toDate(withFormat: "yyyyMMddHHmmss")!
+                        }
+                    }
+                    if let exif = dict["{Exif}"] as? [String: Any] {
+                        if let date = exif["DateTimeOriginal"] as? String {
+                            dat = date.toDate(withFormat: "yyyy:MM:dd HH:mm.ss")!
+                        }
+                        if let date = exif["DateTimeDigitized"] as? String {
+                            dat = date.toDate(withFormat: "yyyy:MM:dd HH:mm.ss")!
+                        }
+                    }
+                    if let gps = dict["{GPS}"] as? [String: Any] {
+                        if let cooLat = gps["Latitude"] as? Double {
+                            coordinate.latitude = cooLat
+                        }
+                        if let cooLon = gps["Longitude"] as? Double {
+                            coordinate.longitude = cooLon
+                        }
+                        if
+                            let date = gps["DateStamp"] as? String,
+                            let time = gps["TimeStamp"] as? String {
+                            let datetime = (date + time).replacingOccurrences(of: ":- ", with: "", options: [.regularExpression])
+                            if let d = datetime.toDate(withFormat: "yyyyMMddHHmmss") {
+                                dat = d
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        if picker.sourceType != .camera {
+            let picUrl = info[UIImagePickerController.InfoKey.imageURL] as! URL
+            readImageData(url: picUrl)
         }
 
         func utcConvert(_ d: Date) -> (date: String, time: String) {
@@ -119,7 +159,11 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             let tS = df.string(from: d)
             return (dS, tS)
         }
+        
         let utc = utcConvert(dat)
+        print(utc)
+        print(coordinate.latitude)
+        print(coordinate.longitude)
         
         let resizedImage = pickedImage.resize(Config.maxPicSize)!
         let resizedData = NSMutableData(data: resizedImage.jpegData(compressionQuality: 0.7)!)
@@ -128,14 +172,18 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         
         let finalExif = NSMutableDictionary(dictionary: resizedExif)
         
-        let gpsDict = [
-            kCGImagePropertyGPSLatitude     : fabs(currentCoordinateGps.latitude),
-            kCGImagePropertyGPSLongitude    : fabs(currentCoordinateGps.longitude),
-            kCGImagePropertyGPSLatitudeRef  : currentCoordinateGps.latitude < 0.0 ? "S" : "N",
-            kCGImagePropertyGPSLongitudeRef : currentCoordinateGps.longitude < 0.0 ? "W" : "E",
+        var gpsDict = [
             kCGImagePropertyGPSTimeStamp    : utc.time,
             kCGImagePropertyGPSDateStamp    : utc.date,
+            kCGImagePropertyExifDateTimeDigitized : utc,
             ] as [CFString : Any]
+        if coordinate.latitude != 0.0 || coordinate.longitude != 0.0 {
+            gpsDict[kCGImagePropertyGPSLatitude]     = fabs(coordinate.latitude)
+            gpsDict[kCGImagePropertyGPSLongitude]    = fabs(coordinate.longitude)
+            gpsDict[kCGImagePropertyGPSLatitudeRef]  = coordinate.latitude < 0.0 ? "S" : "N"
+            gpsDict[kCGImagePropertyGPSLongitudeRef] = coordinate.longitude < 0.0 ? "W" : "E"
+        }
+        
         finalExif.setValue(gpsDict, forKey: kCGImagePropertyGPSDictionary as String)
         
         let uti = CGImageSourceGetType(resizedSource!)
@@ -145,12 +193,4 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         self.delegate?.kpiAtchSelectedImage(withData: resizedData as Data)
         close()
     }
-}
-
-fileprivate func convertDict(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
-}
-
-fileprivate func convertKey(_ input: UIImagePickerController.InfoKey) -> String {
-	return input.rawValue
 }

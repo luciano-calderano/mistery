@@ -179,7 +179,7 @@ class MYUpload {
                 "object_id"     : User.shared.getUsername(),
                 "object_file"   : data,
                 ] as [String: Any]
-            let req = MYHttp(.get, param: json, showWheel: false, hasHeader: true)
+            let req = MYHttp(.get, param: json, hasHeader: true)
             req.load(ok: {
                 (response) in
                 print(response)

@@ -95,9 +95,11 @@ class KpiMain: MYViewController {
         case .next:
             nextKpi()
         case .last:
+            MYHud.show()
             let mySend = MySend()
             mySend.onTerminate = {
                 (title, msg) in
+                MYHud.hide()
                 self.alert(title, message: msg, okBlock: { (action) in
                     self.navigationController?.popToRootViewController(animated: true)
                 })

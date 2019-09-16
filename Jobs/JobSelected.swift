@@ -21,7 +21,7 @@ class JobSelected {
         
         if validWorkingPath() {
             if Current.job.kpis.count == 0 {
-                getDetail ()
+                downloadDetail ()
             } else {
                 openJobDetail()
             }
@@ -43,7 +43,7 @@ class JobSelected {
         return false
     }
     
-    private func getDetail () {
+    private func downloadDetail () {
         User.shared.getUserToken(completion: { (redirect_url) in
             self.loadJobDetail()
         }) {
@@ -53,12 +53,13 @@ class JobSelected {
     }
     
     private func loadJobDetail () {
+        MYHud.show()
         let job = Current.job
         let param = [ "object" : "job", "object_id":  job.id ] as JsonDict
         let request = MYHttp(.get, param: param)
-        
         request.load(ok: {
             (response) in
+            MYHud.hide()
             let dict = response.dictionary("job")
             if let job = MYJob.shared.createJob(withDict: dict) {
                 Current.job = job
@@ -68,6 +69,7 @@ class JobSelected {
             self.completionHandler("Errore lettura dettaglio incarico", "\(job.id)")
         }) {
             (errorCode, message) in
+            MYHud.hide()
             self.completionHandler(errorCode, message)
         }
     }
@@ -105,8 +107,8 @@ class JobSelected {
     
     private func downloadAtch (url urlString: String, kpiId: Int) {
         let param = [ "object" : "job", "result_attachment": Current.job.id ] as JsonDict
-        let request = MYHttp(.get, param: param, showWheel: false)
-        
+        let request = MYHttp(.get, param: param)
+
         request.loadAtch(url: urlString, ok: {
             (response) in
             do {
@@ -114,12 +116,20 @@ class JobSelected {
                 print(dict)
             } catch {
                 let suffix = UIImage(data: response) == nil ? "pdf" : "jpg"
+//                if suffix == "jpg",
+//                    let source = CGImageSourceCreateWithData(response as CFData, nil),
+//                    let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: String] {
+//                    let date = metadata[kCGImagePropertyTIFFDateTime] ?? ""
+//                    let dateStamp = metadata[kCGImagePropertyGPSDateStamp] ?? ""
+//                    let timeStamp = metadata[kCGImagePropertyGPSTimeStamp] ?? ""
+//                    print(metadata, date, dateStamp, timeStamp)
+//                }
                 let fileName = Current.jobPath + "\(Current.job.reference).\(kpiId).\(suffix)"
                 let url = URL(fileURLWithPath: fileName)
                 do {
                     try response.write(to: url)
                 } catch {
-                    print("Unable to dafeimage to file\nError: \(error)", fileName)
+                    self.completionHandler ("Errore download foto", "\(Current.job.reference).\(kpiId).\(suffix)")
                 }
             }
         })

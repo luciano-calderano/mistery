@@ -12,7 +12,7 @@ class JobsHome: MYViewController {
     class func Instance() -> JobsHome {
         return Instance(sbName: "Jobs", isInitial: true) as! JobsHome
     }
-
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
@@ -21,14 +21,14 @@ class JobsHome: MYViewController {
     }()
     
     private var zipFilesList = [URL]()
-
+    
     @IBOutlet private var tableView: UITableView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.addSubview(refreshControl)
-//        MYJob.shared.clearJobs()
+        //        MYJob.shared.clearJobs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,17 +63,20 @@ class JobsHome: MYViewController {
         }
         
         func loadJobsList () {
+            MYHud.show()
             let param = [ "object" : "jobs_list" ]
             let request = MYHttp(.get, param: param)
             request.load(ok: {
                 (response) in
+                MYHud.hide()
                 showJobsList(jobDictArray: response.array("jobs") as! [JsonDict])
             }) {
                 (errorCode, message) in
+                MYHud.hide()
                 showError(error: errorCode, message: message)
             }
         }
-
+        
         func downloadJobs () {
             User.shared.getUserToken(completion: { (redirect_url) in
                 loadJobsList()
@@ -88,7 +91,7 @@ class JobsHome: MYViewController {
         } else {
             downloadJobs()
         }
-
+        
         func showError (error: String, message: String) {
             alert(error, message: message, okBlock: nil)
         }        
@@ -140,10 +143,12 @@ extension JobsHome: UITableViewDelegate {
             if jobId == 0 {
                 return
             }
+            MYHud.show()
             Current.job.id = jobId!
             let mySend = MySend()
             mySend.onTerminate = {
                 (title, msg) in
+                MYHud.hide()
                 self.alert(title, message: msg)
                 self.getListZip()
                 tableView.reloadData()
@@ -197,11 +202,16 @@ extension JobsHome {
             print("getListZip: error")
         }
     }
+}
+
+class UploadCell: UITableViewCell {
+    class func dequeue (_ tableView: UITableView, _ indexPath: IndexPath) -> UploadCell {
+        return tableView.dequeueReusableCell(withIdentifier: "UploadCell", for: indexPath) as! UploadCell
+    }
     
-    private func openListZip() {
-        let ctrl = UploadVC.Instance()
-        navigationController?.show(ctrl, sender: self)
-        ctrl.title = "Upload"
-        ctrl.dataArray = zipFilesList
+    @IBOutlet var name: MYLabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 }

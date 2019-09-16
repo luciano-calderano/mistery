@@ -114,7 +114,7 @@ class User: NSObject {
             "password"      : userdata.pass,
         ]
 
-        let req = MYHttp(.grant, param: param, showWheel: false, hasHeader: false)
+        let req = MYHttp(.grant, param: param, hasHeader: false)
         req.load(ok: {
             (response) in
             self.token = response.string("token->access_token")
