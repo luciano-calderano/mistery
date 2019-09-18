@@ -49,6 +49,7 @@ class MenuView: UIView {
             addMenuItem("ico.cercando",  type: .cerc),
             addMenuItem("ico.news",      type: .news),
             addMenuItem("ico.mail",      type: .cont),
+            addMenuItem("ico.chat",      type: .chat),
             addMenuItem("ico.logout",    type: .logout),
         ]
     }

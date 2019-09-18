@@ -143,6 +143,7 @@ extension JobsHome: UITableViewDelegate {
             if jobId == 0 {
                 return
             }
+            bugsnag.setUser(id: jobId!)
             MYHud.show()
             Current.job.id = jobId!
             let mySend = MySend()
@@ -171,6 +172,7 @@ extension JobsHome: JobsHomeCellDelegate {
 
 extension JobsHome {
     func selectedJob (_ job: Job) {
+        bugsnag.setUser(id: job.id)
         MYHud.show()
         let js = JobSelected()
         js.load(job, completion: { (error, msg) in
@@ -199,7 +201,7 @@ extension JobsHome {
             }
         }
         catch {
-            print("getListZip: error")
+            bugsnag.sendException("getListZip: error")
         }
     }
 }

@@ -109,7 +109,7 @@ class MYHttp {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: []) as! JsonDict
             } catch {
-                print(error.localizedDescription)
+                bugsnag.sendException(error.localizedDescription)
             }
         }
         return [:]

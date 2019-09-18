@@ -42,14 +42,14 @@ class MySend {
         do {
             jsonData = try JSONSerialization.data(withJSONObject: MYResult.resultDict, options: .prettyPrinted)
         } catch {
-            appendLog("JSONSerialization: error")
+            bugsnag.sendException("JSONSerialization: error")
             return false
         }
         
         do {
             try jsonData.write(to: URL(fileURLWithPath: Current.jobPath + Config.File.json))
         } catch {
-            appendLog("json.write: error")
+            bugsnag.sendException("json.write: error")
             return false
         }
         
@@ -60,12 +60,12 @@ class MySend {
                                                     options: [])
             
         } catch {
-            appendLog ("contentsOfDirectory: error")
+            bugsnag.sendException ("contentsOfDirectory: error")
             return false
         }
         
         guard MYZip.zipFiles(filesToZip, jobId: Current.job.id) else {
-            appendLog ("zipFiles: error")
+            bugsnag.sendException ("zipFiles: error")
             return false
         }
         
@@ -74,7 +74,7 @@ class MySend {
             MYJob.shared.removeJobWithId(Current.job.id)
             MYResult.shared.removeResultWithId(Current.job.id)
         } catch {
-            appendLog ("removeFiles: error")
+            bugsnag.sendException ("removeFiles: error")
             return false
         }
         return true
@@ -102,7 +102,7 @@ class MySend {
             uploadZip(zipUrl, data: data)
         }
         catch {
-            appendLog("startUploadIncarico: error")
+            bugsnag.sendException("startUploadIncarico: error")
             self.errore()
         }
     }
@@ -120,7 +120,7 @@ class MySend {
             request = req
         }
         catch {
-            appendLog("Errore Auth: \(zipUrl)" )
+            bugsnag.sendException("Errore Auth: \(zipUrl)" )
             self.errore()
             return
         }

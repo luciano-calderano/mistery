@@ -10,6 +10,22 @@
 
 import Foundation
 import LcLib
+import Bugsnag
+
+struct bugsnag {
+    static func setUser (id: Int) {
+        Bugsnag.configuration()?.setUser(String(id),
+                                         withName: User.shared.getUsername(),
+                                         andEmail: "user@example.com")
+        
+    }
+    static func sendException (_ reason: String, info:[String: String]? = nil) {
+        let exception = NSException(name:NSExceptionName(rawValue: "NamedException"),
+                                    reason: reason,
+                                    userInfo: info)
+        Bugsnag.notify(exception)
+    }
+}
 
 typealias JsonDict = Dictionary<String, Any>
 func Lng(_ key: String) -> String {

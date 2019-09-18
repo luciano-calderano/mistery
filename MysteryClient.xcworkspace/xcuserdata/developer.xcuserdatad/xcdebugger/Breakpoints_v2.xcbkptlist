@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jobs/JobsHome.swift"
-            timestampString = "589710525.3387721"
+            timestampString = "590497019.9225301"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -48,22 +48,6 @@
             startingLineNumber = "98"
             endingLineNumber = "98"
             landmarkName = "validateResponse(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MysteryClient/AppDelegate.swift"
-            timestampString = "590327251.636281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "needsUpdate()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

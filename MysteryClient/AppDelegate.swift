@@ -9,6 +9,7 @@
 import UIKit
 import LcLib
 import UserNotifications
+import Bugsnag
 
 @UIApplicationMain
 
@@ -19,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         createWorkingPath()
         MYLang.setup(langListCodes: ["it"], langFileName: "Lang.txt")
-        
-        UNUserNotificationCenter.current().delegate = self
+        registerForPushNotifications()
+        Bugsnag.start(withApiKey: "09f8deca7aebd9043956e43b1255b43e")
         return true
     }
     
@@ -34,7 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
-    
+    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+        receivedMemoryWarning()
+        
+    }
+}
+
+extension AppDelegate {
     private func needsUpdate() {
         guard let infoDictionary = Bundle.main.infoDictionary else { return }
         let appID = infoDictionary["CFBundleIdentifier"] as! String
@@ -45,12 +52,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let results = lookup["results"] as? [[String:Any]], let result = results.first else { return }
         guard let appStoreVersion = result["version"] as? String else { return }
         
-        let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String
-        if (appStoreVersion != currentVersion) {
+        let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String ?? ""
+        if ("2." + appStoreVersion != currentVersion) {
             showAlert()
         }
     }
-
+    
     private func showAlert () {
         let alert = UIAlertController(title: "Aggiornamento Mystery Client",
                                       message: "E' presente una nuova versione su apple store.\nL'app deve essere aggiornata",
@@ -58,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (alert) in
             let urlStr = "https://itunes.apple.com/it/app/mystery-client/id1380166821?mt=8"
             let url = URL(string: urlStr)!
-            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }))
         alert.addAction(UIAlertAction(title: "Più tardi", style: .default, handler: nil))
         
@@ -66,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ctrl?.present(alert, animated: true, completion: nil)
     }
     
-    func applicationDidReceiveMemoryWarning(_ application: UIApplication) {
+    private func receivedMemoryWarning() {
         var info = mach_task_basic_info()
         var count = mach_msg_type_number_t(MemoryLayout<mach_task_basic_info>.size)/4
         
@@ -101,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func createWorkingPath () {
-        let fm = FileManager.default  
+        let fm = FileManager.default
         for path in [Config.Path.zip, Config.Path.result] {
             if fm.fileExists(atPath: path) {
                 continue
@@ -111,29 +118,67 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                        withIntermediateDirectories: true,
                                        attributes: nil)
             } catch let error as NSError {
-                print("Directory (result) error: \(error.debugDescription)")
+                bugsnag.sendException("Directory (result) error: \(error.debugDescription)")
             }
         }
     }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter,
-                                didReceive response: UNNotificationResponse, withCompletionHandler
-        completionHandler: @escaping () -> Void) {
-        print(response.notification.request.content.userInfo)
-        return completionHandler()
+    private func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        startNotification()
+    }
+    private func startNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            [weak self] granted, error in
+            guard let self = self else { return }
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            
+            self.getNotificationSettings()
+        }
     }
     
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent
-        notification: UNNotification, withCompletionHandler completionHandler:
-        @escaping (UNNotificationPresentationOptions) -> Void) {
-        return completionHandler(UNNotificationPresentationOptions.alert)
+    private func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication,
+                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        
+        print("Failed to register: \(error)")
+    }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler:
+        @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        print("Userinfo: \(userInfo)")
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content.userInfo
+        print("Userinfo: \(userInfo)")
+        completionHandler()
     }
 }
 
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
-}

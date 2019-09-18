@@ -25,7 +25,7 @@ class MYZip {
             return true
         }
         catch  {
-            print("Adding entry to ZIP archive failed with error:\(error)")
+            bugsnag.sendException("Adding entry to ZIP archive failed with error:\(error)")
         }
         return false
     }
@@ -38,7 +38,7 @@ class MYZip {
             do {
                 try archive.addEntry(with: url.lastPathComponent, relativeTo: url.deletingLastPathComponent())
             } catch {
-                print("Adding entry to ZIP archive failed with error:\(error)")
+                bugsnag.sendException("Adding entry to ZIP archive failed with error:\(error)")
                 return false
             }
         }
@@ -55,7 +55,7 @@ class MYZip {
             try archive.addEntry(with: urlFile.lastPathComponent, relativeTo: zipUrl.deletingLastPathComponent())
             return zipUrl.absoluteString
         } catch {
-            print("Adding entry to ZIP archive failed with error:\(error)")
+            bugsnag.sendException("Adding entry to ZIP archive failed with error:\(error)")
             return ""
         }
     }

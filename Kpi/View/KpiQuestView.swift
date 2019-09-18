@@ -164,7 +164,7 @@ class KpiQuestView: KpiBaseView {
                     self.currentResult.attachment = ""
                 }
                 catch let error as NSError {
-                    print("removeItem atPath: \(error)")
+                    bugsnag.sendException("removeItem atPath: \(error)")
                     self.currentResult.attachment = ""
                 }
                 self.showAtch()
@@ -286,7 +286,7 @@ extension KpiQuestView: KpiAtchDelegate {
         do {
             try data.write(to: URL(fileURLWithPath: file))
         } catch {
-            print("errore salvataggio file " + currentResult.attachment)
+            bugsnag.sendException("errore salvataggio file " + currentResult.attachment)
             currentResult.attachment = "";
         }
         showAtch()

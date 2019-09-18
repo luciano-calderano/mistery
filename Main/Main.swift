@@ -150,6 +150,8 @@ extension Main {
             webType = .cercando
         case .news :
             webType = .news
+        case .chat :
+            webType = .chat
         case .cont :
             webType = .contattaci
         case .lear :

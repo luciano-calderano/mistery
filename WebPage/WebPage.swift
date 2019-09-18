@@ -11,10 +11,11 @@ import WebKit
 
 class WebPage: MYViewController {
     enum WebPageEnum: String {
-        case recover = "login/retrieve-password?app=1"
+        case recover = "login/retrieve-password/app/1"
         case register = "login/register?app=1"
         
         case profile = "mystery/profile"
+        case chat = "ticket/chat"
         case storico = "checking/executed"
         case find = "checking/finder"
         case cercando = "mystery/communications"

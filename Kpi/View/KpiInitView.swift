@@ -118,7 +118,7 @@ extension KpiInitView: KpiAtchDelegate {
         do {
             try data.write(to: URL(fileURLWithPath: file))
         } catch {
-            print("errore salvataggio file " + currentResult.attachment)
+            bugsnag.sendException("errore salvataggio file " + currentResult.attachment)
             currentResult.attachment = "";
         }
     }

@@ -17,7 +17,7 @@ extension Dictionary {
             }
         }
         catch let error as NSError {
-            print("Error readig Dictionary: \(error.localizedDescription)")
+            bugsnag.sendException("Error readig Dictionary: \(error.localizedDescription)")
         }
     }
     
@@ -30,8 +30,9 @@ extension Dictionary {
             return true
         }
         catch let error as NSError {
-            fatalError("Error saving to file: \(error.localizedDescription)")
+            bugsnag.sendException("Error saving to file: \(error.localizedDescription)")
         }
+        return false
     }
 }
 

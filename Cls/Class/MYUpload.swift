@@ -47,7 +47,7 @@ class MYUpload {
             }
         }
         catch {
-            print("startUpload: error")
+            bugsnag.sendException("startUpload: error")
         }
     }
     
@@ -65,7 +65,7 @@ class MYUpload {
             MYUpload().uploadZip(zipUrl, data: data)
         }
         catch {
-            print("startUpload: error")
+            bugsnag.sendException("startUpload: error")
         }
     }
 
@@ -84,8 +84,7 @@ class MYUpload {
             request = req
         }
         catch {
-            MYUpload.appendLog("Errore Auth: \(zipUrl)" )
-            self.error(id: jobId, err: "start: URLRequest error")
+            bugsnag.sendException("start: URLRequest error")
             return
         }
         
@@ -166,10 +165,11 @@ class MYUpload {
             zipFile = MYZip.zipLogFile(file)
         }
         catch {
+            bugsnag.sendException("sendLog")
         }
         
         if zipFile.isEmpty {
-            print("Errore")
+            bugsnag.sendException("Errore zipfile.empty")
             return
         }
         do {
