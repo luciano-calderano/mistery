@@ -155,6 +155,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
+        User.shared.tokenPush = token
         print("Device Token: \(token)")
     }
     

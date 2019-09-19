@@ -41,13 +41,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Kpi/KpiMain.swift"
-            timestampString = "589712191.252784"
+            filePath = "Main/Main.swift"
+            timestampString = "590577366.3763241"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "validateResponse(_:)"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "sendTokenPush()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Main/Main.swift"
+            timestampString = "590577366.3764451"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
+            landmarkName = "sendTokenPush()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

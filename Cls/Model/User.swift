@@ -14,6 +14,7 @@ class User: NSObject {
     struct UserData: Codable {
         public var user = ""
         public var pass = ""
+        
         public var saved = false
         public var lastLogin: Date?
     }
@@ -22,6 +23,7 @@ class User: NSObject {
     private var userToken = ""
     private let keyPlist = "MysteryClient"
 
+    var tokenPush = "327b535c029c599e74a9109254a33fd79dcfa179"
     var token: String {
         get {
             return userToken.isEmpty ? userToken : "Bearer " + userToken
@@ -98,7 +100,7 @@ class User: NSObject {
         }
     }
     
-    private func saveUserData (){
+     private func saveUserData (){
         UserDefaults.standard.set(try? PropertyListEncoder().encode(userdata), forKey: keyPlist)
     }
     

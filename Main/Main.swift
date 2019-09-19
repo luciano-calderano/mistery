@@ -192,10 +192,12 @@ extension Main: LoginViewDelegate {
                               userName: user,
                               password: pass,
                               completion: { (redirect_url) in
+                                print(redirect_url)
                                 MYHud.hide()
                                 view.removeFromSuperview()
-                                print(redirect_url)
                                 MYJob.shared.clearJobs()
+                                
+                                self.sendTokenPush()
                                 
         }) { (errorCode, message) in
             MYHud.hide()
@@ -209,6 +211,21 @@ extension Main: LoginViewDelegate {
         openWeb(type: .recover, title: "passForg")
     }
     
+    private func sendTokenPush() {
+        let param = [
+            "object"    : "notification-token",
+            "object_id" : User.shared.tokenPush
+        ]
+        let request = MYHttp(.put, param: param)
+        request.load(ok: {
+            (response) in
+            print(response)
+        }) {
+            (errorCode, message) in
+            self.alert(errorCode, message: message, okBlock: nil)
+        }
+        
+    }
     private func openWeb (type: WebPage.WebPageEnum, title: String) {
         let ctrl = WebPage.Instance(type: type)
         navigationController?.show(ctrl, sender: self)

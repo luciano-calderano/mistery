@@ -14,8 +14,7 @@ extension NSMutableData {
 }
 
 enum MYHttpType {
-    case grant
-    case get
+    case grant, get, put
 }
 
 import Foundation
@@ -37,6 +36,9 @@ class MYHttp {
         case .get:
             type = .get
             apiUrl = Config.Url.get
+        case .put:
+            type = .put
+            apiUrl = Config.Url.put
         case .grant:
             type = .post
             apiUrl = Config.Url.grant

@@ -19,7 +19,7 @@ struct bugsnag {
                                          andEmail: "user@example.com")
         
     }
-    static func sendException (_ reason: String, info:[String: String]? = nil) {
+    static func sendException (_ reason: String, info:[String: Any]? = nil) {
         let exception = NSException(name:NSExceptionName(rawValue: "NamedException"),
                                     reason: reason,
                                     userInfo: info)
