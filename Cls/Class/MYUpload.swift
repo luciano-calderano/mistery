@@ -153,68 +153,44 @@ class MYUpload {
         let request = UNNotificationRequest(identifier: "MysteryClientJobSent", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         MYUpload.appendLog("Notification: \(content)")
-        print(MYUpload.textLog)
+        bugsnag.sendError(MYUpload.textLog)
         sendLog()
     }
 
     private func sendLog () {
-        let file = NSTemporaryDirectory() + "log.txt"
-        var zipFile = ""
-        do {
-            try MYUpload.textLog.write(toFile: file, atomically: true, encoding: .utf8)
-            zipFile = MYZip.zipLogFile(file)
-        }
-        catch {
-            bugsnag.sendException("sendLog")
-        }
-        
-        if zipFile.isEmpty {
-            bugsnag.sendException("Errore zipfile.empty")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: URL(fileURLWithPath: zipFile))
-            let json = [
-                "object"        : "log",
-                "object_id"     : User.shared.getUsername(),
-                "object_file"   : data,
-                ] as [String: Any]
-            let req = MYHttp(.get, param: json, hasHeader: true)
-            req.load(ok: {
-                (response) in
-                print(response)
-            }) {
-                (code, error) in
-                print(code, error)
-            }
-        }
-        catch {
-            
-        }
-        /*
-         object Testo Obbligatorio. Oggetto richiesto nella chiamata. Per inviare il
-         file di log questo parametro deve essere valorizzato con “log”.
-         object_id Testo Obbligatorio. Lo username dello shopper collegato.
-         object_file File Obbligatorio. File compresso (.zip) contenente il log e
-         (LOG.log) e tutti i file degli incarichi compilati ma non ancora
-         inviati (ID_INCARICO.json).
-         9.1 La chiamata restituisce un oggetto JSON così composto:
-         Attributo Tipo Descrizione
-         status Testo Obbligatorio. Esito della chiamata. Uno dei seguenti valori:
-         
-         “ok”: Chiamata completata con successo.
-         “failed”: Chiamata terminata con errore.
-         
-         code Numerico Obbligatorio. Il codice di ritorno della chiamata. Può
-         assumere i valori definiti per i codici di stato HTTP. In caso di
-         esito positivo il valore è 200.
-         
-         message Testo Obbligatorio. Descrizione dell'errore. Popolato solo se si è
-         
-         verificato un errore.
-         */
-    }
-    
-
+//        let file = NSTemporaryDirectory() + "log.txt"
+//        var zipFile = ""
+//        do {
+//            try MYUpload.textLog.write(toFile: file, atomically: true, encoding: .utf8)
+//            zipFile = MYZip.zipLogFile(file)
+//        }
+//        catch {
+//            bugsnag.sendException("sendLog")
+//        }
+//        
+//        if zipFile.isEmpty {
+//            bugsnag.sendException("Errore zipfile.empty")
+//            return
+//        }
+//        do {
+//            let data = try Data(contentsOf: URL(fileURLWithPath: zipFile))
+//            let json = [
+//                "object"        : "log",
+//                "object_id"     : User.shared.getUsername(),
+//                "object_file"   : data,
+//                ] as [String: Any]
+//            let req = MYHttp(.get, param: json, hasHeader: true)
+//            req.load(ok: {
+//                (response) in
+//                print(response)
+//            }) {
+//                (code, error) in
+//                print(code, error)
+//            }
+//        }
+//        catch {
+//
+//        }
+     }
 }
 

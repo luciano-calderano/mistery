@@ -16,10 +16,16 @@ struct bugsnag {
     static func setUser (id: Int) {
         Bugsnag.configuration()?.setUser(String(id),
                                          withName: User.shared.getUsername(),
-                                         andEmail: "user@example.com")
+                                         andEmail: "Incarico selezionato")
         
     }
+    static func sendError (_ reason: String, code: Int = 0, info:[String: Any]? = nil) {
+        print(reason, info ?? "")
+        let err = NSError(domain: reason, code: code, userInfo: info)
+        Bugsnag.notifyError(err)
+    }
     static func sendException (_ reason: String, info:[String: Any]? = nil) {
+        print(reason, info ?? "")
         let exception = NSException(name:NSExceptionName(rawValue: "NamedException"),
                                     reason: reason,
                                     userInfo: info)

@@ -213,7 +213,7 @@ extension Main: LoginViewDelegate {
     
     private func sendTokenPush() {
         let param = [
-            "object"    : "notification-token",
+            "object"    : "notification_token",
             "object_id" : User.shared.tokenPush
         ]
         let request = MYHttp(.put, param: param)

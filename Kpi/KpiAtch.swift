@@ -108,7 +108,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             if let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) {
                 let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)
                 if let dict = imageProperties as? [String: Any] {
-                    bugsnag.sendException("Exif foto selezionata", info: dict)
+                    bugsnag.sendError("Exif foto selezionata", code: 0, info: dict)
                     if let iptc = dict["{IPTC}"] as? [String: Any] {
                         if
                             let date = iptc["DigitalCreationDate"] as? String,
@@ -180,11 +180,11 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             gpsDict[kCGImagePropertyGPSLongitudeRef] = coordinate.longitude < 0.0 ? "W" : "E"
         }
         else {
-            bugsnag.sendException("Coordinate foto non trovate")
+            bugsnag.sendError("Coordinate foto non trovate")
         }
         
         finalExif.setValue(gpsDict, forKey: kCGImagePropertyGPSDictionary as String)
-        bugsnag.sendException("Exif foto trasmessa", info: finalExif as? [String : Any])
+        bugsnag.sendError("Exif foto trasmessa", info: finalExif as? [String : Any])
 
         let uti = CGImageSourceGetType(resizedSource!)
         let destination = CGImageDestinationCreateWithData(resizedData as CFMutableData, uti!, 1, nil)!

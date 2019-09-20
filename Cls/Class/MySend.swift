@@ -23,7 +23,7 @@ class MySend {
     func sendResult () {
         textLog = ""
         appendLog("Start")
-        bugsnag.sendException("Json result", info: MYResult.resultDict)
+        bugsnag.sendError("Json result", code: 0, info: MYResult.resultDict)
         
         if createZip() {
             startUpload()

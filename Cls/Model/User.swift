@@ -23,7 +23,7 @@ class User: NSObject {
     private var userToken = ""
     private let keyPlist = "MysteryClient"
 
-    var tokenPush = "327b535c029c599e74a9109254a33fd79dcfa179"
+    var tokenPush = "- Simulatore iOS -"
     var token: String {
         get {
             return userToken.isEmpty ? userToken : "Bearer " + userToken

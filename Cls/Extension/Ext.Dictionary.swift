@@ -8,8 +8,12 @@ extension Dictionary {
     
     init (fromFile: String) {
         self.init()
+        if FileManager.default.fileExists(atPath: fromFile) == false {
+            return
+        }
+        let url = getUrl(fromFile)
         do {
-            let data = try Data(contentsOf: getUrl(fromFile))
+            let data = try Data(contentsOf: url)
             
             let dict = try PropertyListSerialization.propertyList(from: data, options: .mutableContainersAndLeaves, format: nil) as! Dictionary<Key, Value>
             for key in dict.keys {
@@ -17,20 +21,21 @@ extension Dictionary {
             }
         }
         catch let error as NSError {
-            bugsnag.sendException("Error readig Dictionary: \(error.localizedDescription)")
+            bugsnag.sendException("Errore lettura plist \(url.lastPathComponent): \(error.localizedDescription)")
         }
     }
     
     func saveToFile(_ file: String) -> Bool {
+        let url = getUrl(file)
         do {
             let data = try PropertyListSerialization.data(fromPropertyList: self,
                                                           format: .binary,
                                                           options: 0)
-            try data.write(to: getUrl(file))
+            try data.write(to: url)
             return true
         }
         catch let error as NSError {
-            bugsnag.sendException("Error saving to file: \(error.localizedDescription)")
+            bugsnag.sendException("Errore salvataggio plist \(url.lastPathComponent): \(error.localizedDescription)")
         }
         return false
     }
