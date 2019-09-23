@@ -39,19 +39,33 @@ class MenuView: UIView {
 
         let tapBack = UITapGestureRecognizer(target: self, action: #selector(swipped))
         backView.addGestureRecognizer(tapBack)
-        
-        dataArray = [
-            addMenuItem("ico.home",      type: .home),
-            addMenuItem("ico.incarichi", type: .inca),
-            addMenuItem("ico.ricInc",    type: .stor),
-            addMenuItem("ico.find",      type: .find),
-            addMenuItem("ico.profilo",   type: .prof),
-            addMenuItem("ico.cercando",  type: .cerc),
-            addMenuItem("ico.news",      type: .news),
-            addMenuItem("ico.mail",      type: .cont),
-            addMenuItem("ico.chat",      type: .chat),
-            addMenuItem("ico.logout",    type: .logout),
-        ]
+                
+        switch AppConf.appType {
+        case .MC :
+            dataArray = [
+                addMenuItem("ico.home",      type: .home),
+                addMenuItem("ico.incarichi", type: .inca),
+                addMenuItem("ico.ricInc",    type: .stor),
+                addMenuItem("ico.find",      type: .find),
+                addMenuItem("ico.profilo",   type: .prof),
+                addMenuItem("ico.cercando",  type: .cerc),
+                addMenuItem("ico.news",      type: .news),
+                addMenuItem("ico.mail",      type: .cont),
+                addMenuItem("ico.chat",      type: .chat),
+                addMenuItem("ico.logout",    type: .logout),
+            ]
+        case .EA :
+            dataArray = [
+                addMenuItem("ico.home",      type: .home),
+                addMenuItem("ico.incarichi", type: .inca),
+                addMenuItem("ico.ricInc",    type: .stor),
+                addMenuItem("ico.profilo",   type: .prof),
+                addMenuItem("ico.cercando",  type: .cerc),
+                addMenuItem("ico.news",      type: .news),
+                addMenuItem("ico.mail",      type: .cont),
+                addMenuItem("ico.logout",    type: .logout),
+            ]
+        }
     }
     
     private func addMenuItem (_ iconName: String, type: MenuItemEnum) -> MenuItem {

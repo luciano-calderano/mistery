@@ -39,7 +39,10 @@ import UIKit
     override func viewDidLoad() {
         view.backgroundColor = .clear
         view.frame = UIScreen.main.bounds
-        
+        addHud()
+    }
+    
+    private func addHud() {
         let backColor = UIView()
         view.addSubview(backColor)
         backColor.backgroundColor = .black
@@ -66,5 +69,29 @@ import UIKit
         window.windowLevel = UIWindow.Level.alert + 1
         window.makeKeyAndVisible()
         return window
+    }
+    
+    private class RadialGradientView: UIView {
+        let colors = [UIColor.white.cgColor, UIColor.black.cgColor] as CFArray
+        override func draw(_ rect: CGRect) {
+            let gradient = CGGradient(colorsSpace: nil,
+                                      colors: colors,
+                                      locations: nil)
+            let context = UIGraphicsGetCurrentContext()
+            context?.drawRadialGradient(gradient!,
+                                        startCenter: center,
+                                        startRadius: 0.0,
+                                        endCenter: center,
+                                        endRadius: frame.height / 2,
+                                        options: .drawsBeforeStartLocation)
+        }
+    }
+    private func blurOnView(_ view: UIView) {
+        view.backgroundColor = .clear
+        let blurFx = UIBlurEffect(style: .dark)
+        let blurFxView = UIVisualEffectView(effect: blurFx)
+        blurFxView.frame = view.bounds
+        blurFxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.insertSubview(blurFxView, at: 0)
     }
  }

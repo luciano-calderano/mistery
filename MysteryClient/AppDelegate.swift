@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createWorkingPath()
         MYLang.setup(langListCodes: ["it"], langFileName: "Lang.txt")
         registerForPushNotifications()
-        Bugsnag.start(withApiKey: "09f8deca7aebd9043956e43b1255b43e")
+        Bugsnag.start(withApiKey: AppConf.keyBugSnag)
         return true
     }
     

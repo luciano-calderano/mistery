@@ -108,15 +108,25 @@ extension Main: UITableViewDelegate {
 
 extension Main {
     private func loadData() {
-        dataArray = [
-            addMenuItem("ico.incarichi", type: .inca),
-            addMenuItem("ico.ricInc",    type: .stor),
-            addMenuItem("ico.find",      type: .find),
-            addMenuItem("ico.profilo",   type: .prof),
-            addMenuItem("ico.cercando",  type: .cerc),
-            addMenuItem("ico.news",      type: .news),
-            addMenuItem("ico.learning",  type: .lear),
-        ]
+        switch AppConf.appType {
+        case .MC :
+            dataArray = [
+                addMenuItem("ico.incarichi", type: .inca),
+                addMenuItem("ico.ricInc",    type: .stor),
+                addMenuItem("ico.find",      type: .find),
+                addMenuItem("ico.profilo",   type: .prof),
+                addMenuItem("ico.cercando",  type: .cerc),
+                addMenuItem("ico.news",      type: .news),
+                addMenuItem("ico.learning",  type: .lear),
+            ]
+        case .EA :
+            dataArray = [
+                addMenuItem("ico.incarichi", type: .inca),
+                addMenuItem("ico.profilo",   type: .prof),
+                addMenuItem("ico.news",      type: .news),
+                addMenuItem("ico.learning",  type: .lear),
+            ]
+        }
     }
     
     private func addMenuItem (_ iconName: String, type: MenuItemEnum) -> MenuItem {

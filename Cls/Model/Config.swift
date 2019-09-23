@@ -46,8 +46,11 @@ struct Current {
 }
 
 struct Config {
+    enum AppType {
+        case MC, EA
+    }
     struct Url {
-        static let home  = "https://mysteryclient.mebius.it/"
+        static let home  = AppConf.urlHome
         static let grant = Config.Url.home + "default/oauth/grant"
         static let get   = Config.Url.home + "default/rest/get"
         static let put   = Config.Url.home + "default/rest/put"
