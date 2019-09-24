@@ -41,7 +41,7 @@ class JobsHomeCell: UITableViewCell {
         case .MC:
             address.text = job.store.address
         case .EA:
-            address.text = "Numero telaio xxxxxx"
+            address.text = job.keyNameValue
         }
         rif.text = "Rif. " + job.reference
         day.text = job.estimate_date.toString(withFormat: "dd")

@@ -60,6 +60,7 @@ class MYJob {
         job.comment_max = dict.int("comment_max")
         job.learning_done = dict.bool("learning_done") // Boolean [0/1]
         job.learning_url = dict.string("learning_url")
+        job.keyNameValue = dict.string("key_name") + " " + dict.string("key_value") 
         job.store_closed = dict.bool("store_closed") // Boolean [0/1]
         
         let store = dict.dictionary("store")

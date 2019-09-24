@@ -10,8 +10,8 @@ import Foundation
 
 struct AppConf {
     static let appType = Config.AppType.MC
-    static let user = "utente_gen"
-    static let pass = "novella18"
     static let keyBugSnag = "09f8deca7aebd9043956e43b1255b43e"
     static let urlHome  = "https://mysteryclient.mebius.it/"
+    static let client_id = "mystery_app"
+    static let client_secret = "UPqwU7vHXGtHk6JyXrA5"
 }

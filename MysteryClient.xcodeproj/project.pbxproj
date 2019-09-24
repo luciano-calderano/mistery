@@ -148,8 +148,8 @@
 		8B1CAB822338AB9300B987C6 /* Jobs.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FCF1981F0265D50087FBDF /* Jobs.storyboard */; };
 		8B1CAB832338AB9300B987C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04BC640E1EFD830E00C0912D /* Assets.xcassets */; };
 		8B1CAB842338AB9300B987C6 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B311346207E174700BA77D8 /* MenuView.xib */; };
-		8B1CAB8D2338C21200B987C6 /* MCConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8C2338C21200B987C6 /* MCConfig.swift */; };
-		8B1CAB8F2338C23B00B987C6 /* EAConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8E2338C23B00B987C6 /* EAConfig.swift */; };
+		8B1CAB8D2338C21200B987C6 /* AppConfigMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8C2338C21200B987C6 /* AppConfigMC.swift */; };
+		8B1CAB8F2338C23B00B987C6 /* AppConfigEA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */; };
 		8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF02338DA78000C6A16 /* MC.xcassets */; };
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
@@ -254,8 +254,8 @@
 		4F47EB038F49AEA7DFDCA283 /* Pods-MysteryClient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MysteryClient.release.xcconfig"; path = "Pods/Target Support Files/Pods-MysteryClient/Pods-MysteryClient.release.xcconfig"; sourceTree = "<group>"; };
 		8B0CA1E8212C07650016B90A /* MYUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYUpload.swift; sourceTree = "<group>"; };
 		8B1CAB8B2338AB9400B987C6 /* EA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "EA-Info.plist"; path = "/Users/developer/Desktop/Lc/mysteryclient-master/EA-Info.plist"; sourceTree = "<absolute>"; };
-		8B1CAB8C2338C21200B987C6 /* MCConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MCConfig.swift; path = MysteryClient/MCConfig.swift; sourceTree = SOURCE_ROOT; };
-		8B1CAB8E2338C23B00B987C6 /* EAConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EAConfig.swift; sourceTree = "<group>"; };
+		8B1CAB8C2338C21200B987C6 /* AppConfigMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfigMC.swift; path = MysteryClient/AppConfigMC.swift; sourceTree = SOURCE_ROOT; };
+		8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigEA.swift; sourceTree = "<group>"; };
 		8B56FEF02338DA78000C6A16 /* MC.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = MC.xcassets; path = MysteryClient/MC.xcassets; sourceTree = "<group>"; };
 		8B56FEF32338DB07000C6A16 /* EA.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = EA.xcassets; path = MysteryClient/EA.xcassets; sourceTree = "<group>"; };
 		8B56FEF92338DBD3000C6A16 /* MysteryClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MysteryClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,8 +409,8 @@
 				04BCAD331EFA9DCF00745556 /* User.swift */,
 				048C44841F5B167400E836C0 /* JobStruct.swift */,
 				048C44861F5B183D00E836C0 /* ResultStruct.swift */,
-				8B1CAB8C2338C21200B987C6 /* MCConfig.swift */,
-				8B1CAB8E2338C23B00B987C6 /* EAConfig.swift */,
+				8B1CAB8C2338C21200B987C6 /* AppConfigMC.swift */,
+				8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -813,7 +813,7 @@
 				04BCAD341EFA9DCF00745556 /* User.swift in Sources */,
 				4B15739E20A4348500E9FFF7 /* JobSelected.swift in Sources */,
 				8B0CA1E9212C07650016B90A /* MYUpload.swift in Sources */,
-				8B1CAB8D2338C21200B987C6 /* MCConfig.swift in Sources */,
+				8B1CAB8D2338C21200B987C6 /* AppConfigMC.swift in Sources */,
 				4B30C205207F59270018BD6C /* SubCheckBox.swift in Sources */,
 				04C910B31EFD2131000D2DB8 /* HeaderView.swift in Sources */,
 				048C44851F5B167400E836C0 /* JobStruct.swift in Sources */,
@@ -854,7 +854,7 @@
 				8B1CAB472338AB9300B987C6 /* Main.swift in Sources */,
 				8B1CAB482338AB9300B987C6 /* MYMaps.swift in Sources */,
 				8B1CAB492338AB9300B987C6 /* JobDetailAtch.swift in Sources */,
-				8B1CAB8F2338C23B00B987C6 /* EAConfig.swift in Sources */,
+				8B1CAB8F2338C23B00B987C6 /* AppConfigEA.swift in Sources */,
 				8B1CAB4A2338AB9300B987C6 /* Ext.UIFont.swift in Sources */,
 				8B1CAB4B2338AB9300B987C6 /* KpiQuestView.swift in Sources */,
 				8B1CAB4C2338AB9300B987C6 /* KpiInitView.swift in Sources */,

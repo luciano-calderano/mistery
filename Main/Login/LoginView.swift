@@ -52,7 +52,12 @@ class LoginView: UIView {
         userText.text = credential.user
         passText.text = credential.pass
         #if DEBUG
-        userText.text = AppConf.user; passText.text = AppConf.pass
+        switch AppConf.appType {
+        case .EA:
+            userText.text = "auditor_demo"; passText.text = "mebius01"
+        case .MC:
+            userText.text = "utente_gen";   passText.text = "novella18"
+        }
         #endif
         
         saveCred = !credential.user.isEmpty

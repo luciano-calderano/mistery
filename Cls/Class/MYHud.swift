@@ -24,6 +24,7 @@ import UIKit
     
     func show () {
         window = createNewWindow()
+        self.modalPresentationStyle = .fullScreen
         window.rootViewController!.present(self, animated: false, completion: nil)
     }
     

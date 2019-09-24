@@ -109,8 +109,8 @@ class User: NSObject {
         
         let param = [
             "grant_type"    : "password",
-            "client_id"     : "mystery_app",
-            "client_secret" : "UPqwU7vHXGtHk6JyXrA5",
+            "client_id"     : AppConf.client_id,
+            "client_secret" : AppConf.client_secret,
             "version"       : "i" + version,
             "username"      : userdata.user,
             "password"      : userdata.pass,

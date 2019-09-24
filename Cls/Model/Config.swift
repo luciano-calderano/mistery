@@ -49,6 +49,7 @@ struct Config {
     enum AppType {
         case MC, EA
     }
+
     struct Url {
         static let home  = AppConf.urlHome
         static let grant = Config.Url.home + "default/oauth/grant"

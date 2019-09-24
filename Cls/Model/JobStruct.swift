@@ -34,6 +34,7 @@ struct Job {
     var kpis = [Kpi]()
     var learning_done = false
     var learning_url = ""
+    var keyNameValue = ""
     var store_closed = false
     
     //MARK: -

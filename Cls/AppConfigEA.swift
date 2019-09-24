@@ -10,9 +10,9 @@ import Foundation
 
 struct AppConf {
     static let appType = Config.AppType.EA
-    static let user = "auditor_demo"
-    static let pass = "mebius01"
     static let keyBugSnag = "e1e91513d4572f125341d919e781ca67"
     static let urlHome  = "https://audit.mebius.it/"
+    static let client_id = "easyaudit_app"
+    static let client_secret = "PMcZmZ2YE5uk2FTVkkRx"
 }
 
