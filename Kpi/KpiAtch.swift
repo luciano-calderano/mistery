@@ -10,19 +10,21 @@ import UIKit
 import Photos
 
 protocol KpiAtchDelegate {
-    func kpiAtchSelectedImage(withData data: Data)
+    func kpiAtchselectPhotoValid(_ isValid: Bool)
 }
 
 class KpiAtch: NSObject {
     var mainVC: UIViewController
     var delegate: KpiAtchDelegate?
+    private var destFile = ""
     private var currentCoordinateGps = MYGps.shared.lastPosition
 
     init(mainViewCtrl: UIViewController) {
         mainVC = mainViewCtrl
     }
     
-    func showArchSelection () {
+    func showArchSelection (file: String = "") {
+        destFile = file
         MYGps.shared.start { (coordinateGps) in
             self.currentCoordinateGps = coordinateGps
         }
@@ -91,7 +93,6 @@ class KpiAtch: NSObject {
 //MARK:-
 
 extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         close()
     }
@@ -100,6 +101,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
+        
         
         var dat = Date()
         let asset = (info[UIImagePickerController.InfoKey.phAsset] as? PHAsset)
@@ -145,6 +147,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             }
         }
         
+        
         if picker.sourceType != .camera {
             let picUrl = info[UIImagePickerController.InfoKey.imageURL] as! URL
             readImageData(url: picUrl)
@@ -162,35 +165,62 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         
         let utc = utcConvert(dat)
         let resizedImage = pickedImage.resize(Config.maxPicSize)!
-        let resizedData = NSMutableData(data: resizedImage.jpegData(compressionQuality: 0.7)!)
-        let resizedSource = CGImageSourceCreateWithData(resizedData as CFData, nil)
-        let resizedExif = CGImageSourceCopyPropertiesAtIndex(resizedSource!, 0, nil)! as NSDictionary
+        crea(img: resizedImage, coo: coordinate, time: utc.time, date: utc.date)
+        close()
+    }
+    
+    func crea(img: UIImage, coo: CLLocationCoordinate2D, time: String, date: String) {
+        let jpeg = img.jpegData(compressionQuality: 0.7)! // set JPG quality here (1.0 is best)
+        let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
+        let uti = CGImageSourceGetType(src)!
         
-        let finalExif = NSMutableDictionary(dictionary: resizedExif)
+        let file = destFile // NSTemporaryDirectory() + "test.jpg"
+        let cfPath = CFURLCreateWithFileSystemPath(nil, file as CFString, CFURLPathStyle.cfurlposixPathStyle, false)
+        let dest = CGImageDestinationCreateWithURL(cfPath!, uti, 1, nil)
+        let metadata = addGps(coo: coo, time: time, date: date)
         
-        var gpsDict = [
-            kCGImagePropertyGPSTimeStamp    : utc.time,
-            kCGImagePropertyGPSDateStamp    : utc.date,
-            kCGImagePropertyExifDateTimeDigitized : utc,
-            ] as [CFString : Any]
-        if coordinate.latitude != 0.0 || coordinate.longitude != 0.0 {
-            gpsDict[kCGImagePropertyGPSLatitude]     = fabs(coordinate.latitude)
-            gpsDict[kCGImagePropertyGPSLongitude]    = fabs(coordinate.longitude)
-            gpsDict[kCGImagePropertyGPSLatitudeRef]  = coordinate.latitude < 0.0 ? "S" : "N"
-            gpsDict[kCGImagePropertyGPSLongitudeRef] = coordinate.longitude < 0.0 ? "W" : "E"
+        CGImageDestinationAddImageFromSource(dest!, src, 0, metadata)
+        if (CGImageDestinationFinalize(dest!)) {
+            self.delegate?.kpiAtchselectPhotoValid(true)
+        } else {
+            self.delegate?.kpiAtchselectPhotoValid(false)
+            print("Error saving image with metadata")
+        }
+    }
+    
+    func addGps (coo: CLLocationCoordinate2D, time: String, date: String) -> CFDictionary {
+        
+        let gpsMetadata = NSMutableDictionary()
+        if coo.latitude != 0 && coo.longitude != 0 {
+            let latitudeRef = coo.latitude < 0.0 ? "S" : "N"
+            let longitudeRef = coo.longitude < 0.0 ? "W" : "E"
+            
+            gpsMetadata[(kCGImagePropertyGPSLatitude as String)] = abs(coo.latitude)
+            gpsMetadata[(kCGImagePropertyGPSLongitude as String)] = abs(coo.longitude)
+            gpsMetadata[(kCGImagePropertyGPSLatitudeRef as String)] = latitudeRef
+            gpsMetadata[(kCGImagePropertyGPSLongitudeRef as String)] = longitudeRef
         }
         else {
             bugsnag.sendError("Coordinate foto non trovate")
         }
+//        gpsMetadata[(kCGImagePropertyGPSTimeStamp as String)] = time
+        gpsMetadata[(kCGImagePropertyGPSDateStamp as String)] = date
+        gpsMetadata[(kCGImagePropertyGPSTimeStamp as String)] = [
+            0 : "9/1",
+            1 : "52/1",
+            2 : "11/1"
+        ]
         
-        finalExif.setValue(gpsDict, forKey: kCGImagePropertyGPSDictionary as String)
-        bugsnag.sendError("Exif foto trasmessa", info: finalExif as? [String : Any])
+        let exifMetadata = NSMutableDictionary()
+        exifMetadata[(kCGImagePropertyExifUserComment as String)] = date + " " + time
+        exifMetadata[(kCGImagePropertyExifDateTimeOriginal as String)] =  "2012:08:08 09:52:11" //date + " " + time
+//        exifMetadata["DateTimeOriginal"] = "2012-08-08 09:52:11"
 
-        let uti = CGImageSourceGetType(resizedSource!)
-        let destination = CGImageDestinationCreateWithData(resizedData as CFMutableData, uti!, 1, nil)!
-        CGImageDestinationAddImageFromSource(destination, resizedSource!, 0, (finalExif as CFDictionary?))
-        CGImageDestinationFinalize(destination)
-        self.delegate?.kpiAtchSelectedImage(withData: resizedData as Data)
-        close()
+        let meta: CFDictionary = [
+            kCGImagePropertyGPSDictionary as String : gpsMetadata,
+            kCGImagePropertyExifDictionary as String : exifMetadata
+            ] as CFDictionary
+        print(meta)
+        return meta
     }
 }

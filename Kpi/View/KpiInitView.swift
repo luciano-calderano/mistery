@@ -93,9 +93,16 @@ class KpiInitView: KpiBaseView {
     }
     
     @IBAction func atchTapped () {
+        if geoPhotoKpi < 0 {
+            return
+        }
         let  kpiAtch = KpiAtch(mainViewCtrl: mainVC)
         kpiAtch.delegate = self
-        kpiAtch.showArchSelection()
+        currentResult = Current.result.results[geoPhotoKpi]
+        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
+        let file = Current.jobPath + currentResult.attachment
+
+        kpiAtch.showArchSelection(file: file)
     }
 }
 
@@ -107,17 +114,8 @@ extension KpiInitView: UITextFieldDelegate {
 }
 
 extension KpiInitView: KpiAtchDelegate {
-    func kpiAtchSelectedImage(withData data: Data) {
-        if geoPhotoKpi < 0 {
-            return
-        }
-        
-        currentResult = Current.result.results[geoPhotoKpi]
-        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
-        let file = Current.jobPath + currentResult.attachment
-        do {
-            try data.write(to: URL(fileURLWithPath: file))
-        } catch {
+    func kpiAtchselectPhotoValid(_ isValid: Bool) {
+        if isValid == false {
             bugsnag.sendException("errore salvataggio file " + currentResult.attachment)
             currentResult.attachment = "";
         }

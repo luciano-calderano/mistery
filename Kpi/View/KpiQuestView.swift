@@ -183,7 +183,10 @@ class KpiQuestView: KpiBaseView {
             kpiAtch = KpiAtch(mainViewCtrl: mainVC)
             kpiAtch?.delegate = self
         }
-        kpiAtch?.showArchSelection()
+        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
+        let file = Current.jobPath + currentResult.attachment
+
+        kpiAtch?.showArchSelection(file: file)
     }
     
     private func askNoAtch (completion: @escaping (Bool) -> ()) {
@@ -280,15 +283,19 @@ extension KpiQuestView: UITextViewDelegate {
 //MARK:- Image picker
 
 extension KpiQuestView: KpiAtchDelegate {
-    func kpiAtchSelectedImage(withData data: Data) {
-        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
-        let file = Current.jobPath + currentResult.attachment
-        do {
-            try data.write(to: URL(fileURLWithPath: file))
-        } catch {
+    func kpiAtchselectPhotoValid(_ isValid: Bool) {
+        if isValid == false {
             bugsnag.sendException("errore salvataggio file " + currentResult.attachment)
             currentResult.attachment = "";
         }
+//        currentResult.attachment = "\(Current.job.reference).\(currentKpi.id).jpg"
+//        let file = Current.jobPath + currentResult.attachment
+//        do {
+//            try data.write(to: URL(fileURLWithPath: file))
+//        } catch {
+//            bugsnag.sendException("errore salvataggio file " + currentResult.attachment)
+//            currentResult.attachment = "";
+//        }
         showAtch()
     }
 }
