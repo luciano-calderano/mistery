@@ -156,9 +156,9 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         func utcConvert(_ d: Date) -> (date: String, time: String) {
             let df = DateFormatter()
             df.timeZone = TimeZone(abbreviation: "UTC")
-            df.dateFormat = Config.DateFmt.DataJson
+            df.dateFormat = "yyyy:MM:dd"
             let dS = df.string(from: d)
-            df.dateFormat =  Config.DateFmt.Ora + ":ss"
+            df.dateFormat =  "HH:mm:ss"
             let tS = df.string(from: d)
             return (dS, tS)
         }
@@ -170,11 +170,11 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
     }
     
     func crea(img: UIImage, coo: CLLocationCoordinate2D, time: String, date: String) {
-        let jpeg = img.jpegData(compressionQuality: 0.7)! // set JPG quality here (1.0 is best)
+        let jpeg = img.jpegData(compressionQuality: 0.7)!
         let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
         let uti = CGImageSourceGetType(src)!
         
-        let file = destFile // NSTemporaryDirectory() + "test.jpg"
+        let file = destFile
         let cfPath = CFURLCreateWithFileSystemPath(nil, file as CFString, CFURLPathStyle.cfurlposixPathStyle, false)
         let dest = CGImageDestinationCreateWithURL(cfPath!, uti, 1, nil)
         let metadata = addGps(coo: coo, time: time, date: date)
@@ -203,18 +203,13 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         else {
             bugsnag.sendError("Coordinate foto non trovate")
         }
-//        gpsMetadata[(kCGImagePropertyGPSTimeStamp as String)] = time
+        
+        gpsMetadata[(kCGImagePropertyGPSTimeStamp as String)] = time
         gpsMetadata[(kCGImagePropertyGPSDateStamp as String)] = date
-        gpsMetadata[(kCGImagePropertyGPSTimeStamp as String)] = [
-            0 : "9/1",
-            1 : "52/1",
-            2 : "11/1"
-        ]
         
         let exifMetadata = NSMutableDictionary()
-        exifMetadata[(kCGImagePropertyExifUserComment as String)] = date + " " + time
-        exifMetadata[(kCGImagePropertyExifDateTimeOriginal as String)] =  "2012:08:08 09:52:11" //date + " " + time
-//        exifMetadata["DateTimeOriginal"] = "2012-08-08 09:52:11"
+        exifMetadata[(kCGImagePropertyExifUserComment as String)] = date + " " + time + "\nLat.\(coo.latitude), Lon.\(coo.longitude)"
+        exifMetadata[(kCGImagePropertyExifDateTimeOriginal as String)] =  date + " " + time
 
         let meta: CFDictionary = [
             kCGImagePropertyGPSDictionary as String : gpsMetadata,
