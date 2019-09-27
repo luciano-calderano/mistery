@@ -79,10 +79,7 @@ class KpiAtch: NSObject {
         if type == .camera {
             picker.cameraCaptureMode = .photo
         }
-        MYHud.show()
-        mainVC.present(picker, animated: true) {
-            MYHud.hide()
-        }
+        mainVC.present(picker, animated: true) { }
     }
     
     private func close () {
@@ -101,44 +98,53 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
-        
-        
+                
         var dat = Date()
         let asset = (info[UIImagePickerController.InfoKey.phAsset] as? PHAsset)
         var coordinate = asset?.location?.coordinate ?? CLLocationCoordinate2D()
+        
+        func convertDate(_ d: String) -> Date? {
+            let datetime = d.replacingOccurrences(of:" |\\:|\\-", with: "", options: [.regularExpression])
+            return datetime.toDate(withFormat: "yyyyMMddHHmmss") ?? nil
+        }
+        
         func readImageData(url: URL) {
             if let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) {
                 let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)
                 if let dict = imageProperties as? [String: Any] {
                     bugsnag.sendError("Exif foto selezionata", code: 0, info: dict)
-                    if let iptc = dict["{IPTC}"] as? [String: Any] {
+                    if let iptc = dict[(kCGImagePropertyIPTCDictionary as String)] as? [String: Any] {
                         if
-                            let date = iptc["DigitalCreationDate"] as? String,
-                            let time = iptc["DigitalCreationTime"] as? String {
-                            let datetime = date + time
-                            dat = datetime.toDate(withFormat: "yyyyMMddHHmmss")!
+                            let date = iptc[(kCGImagePropertyIPTCDateCreated as String)] as? String,
+                            let time = iptc[(kCGImagePropertyIPTCTimeCreated as String)] as? String {
+                            if let d = convertDate((date + time)) {
+                                dat = d
+                            }
                         }
                     }
-                    if let exif = dict["{Exif}"] as? [String: Any] {
-                        if let date = exif["DateTimeOriginal"] as? String {
-                            dat = date.toDate(withFormat: "yyyy:MM:dd HH:mm.ss")!
+                    if let exif = dict[(kCGImagePropertyExifDictionary as String)] as? [String: Any] {
+                        if let date = exif[(kCGImagePropertyExifDateTimeDigitized as String)] as? String {
+                            if let d = convertDate(date) {
+                                dat = d
+                            }
                         }
-                        if let date = exif["DateTimeDigitized"] as? String {
-                            dat = date.toDate(withFormat: "yyyy:MM:dd HH:mm.ss")!
+                        if let date = exif[(kCGImagePropertyExifDateTimeOriginal as String)] as? String {
+                            if let d = convertDate(date) {
+                                dat = d
+                            }
                         }
                     }
-                    if let gps = dict["{GPS}"] as? [String: Any] {
-                        if let cooLat = gps["Latitude"] as? Double {
+                    if let gps = dict[(kCGImagePropertyGPSDictionary as String)] as? [String: Any] {
+                        if let cooLat = gps[(kCGImagePropertyGPSLatitude as String)] as? Double {
                             coordinate.latitude = cooLat
                         }
-                        if let cooLon = gps["Longitude"] as? Double {
+                        if let cooLon = gps[(kCGImagePropertyGPSLongitude as String)] as? Double {
                             coordinate.longitude = cooLon
                         }
                         if
-                            let date = gps["DateStamp"] as? String,
-                            let time = gps["TimeStamp"] as? String {
-                            let datetime = (date + time).replacingOccurrences(of: ":- ", with: "", options: [.regularExpression])
-                            if let d = datetime.toDate(withFormat: "yyyyMMddHHmmss") {
+                            let date = gps[(kCGImagePropertyGPSDateStamp as String)] as? String,
+                            let time = gps[(kCGImagePropertyGPSTimeStamp as String)] as? String {
+                            if let d = convertDate((date + time)) {
                                 dat = d
                             }
                         }
@@ -146,8 +152,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
                 }
             }
         }
-        
-        
+                
         if picker.sourceType != .camera {
             let picUrl = info[UIImagePickerController.InfoKey.imageURL] as! URL
             readImageData(url: picUrl)
@@ -169,7 +174,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         close()
     }
     
-    func crea(img: UIImage, coo: CLLocationCoordinate2D, time: String, date: String) {
+    private func crea(img: UIImage, coo: CLLocationCoordinate2D, time: String, date: String) {
         let jpeg = img.jpegData(compressionQuality: 0.7)!
         let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!
         let uti = CGImageSourceGetType(src)!
@@ -188,12 +193,12 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         }
     }
     
-    func addGps (coo: CLLocationCoordinate2D, time: String, date: String) -> CFDictionary {
+    private func addGps (coo: CLLocationCoordinate2D, time: String, date: String) -> CFDictionary {
         
         let gpsMetadata = NSMutableDictionary()
         if coo.latitude != 0 && coo.longitude != 0 {
             let latitudeRef = coo.latitude < 0.0 ? "S" : "N"
-            let longitudeRef = coo.longitude < 0.0 ? "W" : "E"
+            let longitudeRef = coo.longitude < 0.0 ? "E" : "W"
             
             gpsMetadata[(kCGImagePropertyGPSLatitude as String)] = abs(coo.latitude)
             gpsMetadata[(kCGImagePropertyGPSLongitude as String)] = abs(coo.longitude)
@@ -208,8 +213,8 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         gpsMetadata[(kCGImagePropertyGPSDateStamp as String)] = date
         
         let exifMetadata = NSMutableDictionary()
-        exifMetadata[(kCGImagePropertyExifUserComment as String)] = date + " " + time + "\nLat.\(coo.latitude), Lon.\(coo.longitude)"
         exifMetadata[(kCGImagePropertyExifDateTimeOriginal as String)] =  date + " " + time
+        exifMetadata[(kCGImagePropertyExifUserComment as String)] = date + " " + time + " | Lat.\(coo.latitude) | Lon.\(coo.longitude)"
 
         let meta: CFDictionary = [
             kCGImagePropertyGPSDictionary as String : gpsMetadata,
