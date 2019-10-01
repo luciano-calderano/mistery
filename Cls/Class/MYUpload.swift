@@ -1,5 +1,5 @@
 //
-//  MYHttp.swift
+//  MYUpload
 //  MysteryClient
 //
 //  Created by mac on 17/08/17.
@@ -12,7 +12,7 @@ import UserNotifications
 
 class MYUpload {
     static var textLog = ""
-
+    
     class func appendLog (_ txt: String) {
         textLog += Date().toString(withFormat: Config.DateFmt.DataOraJson) + " -> " + txt + "\n"
     }
@@ -29,7 +29,7 @@ class MYUpload {
     class func start() {
         let me = MYUpload()
         textLog = ""
-        appendLog("Start")
+        appendLog("Start upload")
         
         do {
             let zipPath = URL(string: Config.Path.zip)!
@@ -53,8 +53,8 @@ class MYUpload {
     
     class func startUploadIncarico() {
         textLog = ""
-        appendLog("Start")
-
+        appendLog("Start upload incarico")
+        
         let file = String(Current.job.id) + "." + Config.File.zip
         let zipPath = URL(string: Config.Path.zip)!
         let zipUrl = zipPath.appendingPathComponent(file)
@@ -68,7 +68,6 @@ class MYUpload {
             bugsnag.sendException("startUpload: error")
         }
     }
-
     
     func uploadZip (_ zipUrl: URL, data: Data) {
         let jobId = zipUrl.deletingPathExtension().lastPathComponent
@@ -98,7 +97,7 @@ class MYUpload {
             let json = [
                 "object"        : "job",
                 "object_id"     : jobId,
-                ]
+            ]
             
             for (key, value) in json {
                 formData.append(value.data(using: String.Encoding.utf8)!, withName: key)
@@ -144,7 +143,6 @@ class MYUpload {
         content.subtitle = "Incarico n. " + id
         content.body = "La trasmisisone dell'incarico n. \(id) ha dato il seguente errore: \(err)"
         endUpload(content: content)
-        sendLog()
     }
     
     private func endUpload (content: UNMutableNotificationContent) {
@@ -153,44 +151,7 @@ class MYUpload {
         let request = UNNotificationRequest(identifier: "MysteryClientJobSent", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
         MYUpload.appendLog("Notification: \(content)")
-        bugsnag.sendError(MYUpload.textLog)
-        sendLog()
+        bugsnag.sendMsg(MYUpload.textLog)
     }
-
-    private func sendLog () {
-//        let file = NSTemporaryDirectory() + "log.txt"
-//        var zipFile = ""
-//        do {
-//            try MYUpload.textLog.write(toFile: file, atomically: true, encoding: .utf8)
-//            zipFile = MYZip.zipLogFile(file)
-//        }
-//        catch {
-//            bugsnag.sendException("sendLog")
-//        }
-//        
-//        if zipFile.isEmpty {
-//            bugsnag.sendException("Errore zipfile.empty")
-//            return
-//        }
-//        do {
-//            let data = try Data(contentsOf: URL(fileURLWithPath: zipFile))
-//            let json = [
-//                "object"        : "log",
-//                "object_id"     : User.shared.getUsername(),
-//                "object_file"   : data,
-//                ] as [String: Any]
-//            let req = MYHttp(.get, param: json, hasHeader: true)
-//            req.load(ok: {
-//                (response) in
-//                print(response)
-//            }) {
-//                (code, error) in
-//                print(code, error)
-//            }
-//        }
-//        catch {
-//
-//        }
-     }
 }
 

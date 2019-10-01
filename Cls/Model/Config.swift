@@ -19,11 +19,23 @@ struct bugsnag {
                                          andEmail: "Incarico selezionato")
         
     }
-    static func sendError (_ reason: String, code: Int = 0, info:[String: Any]? = nil) {
+    static func sendMsg (_ reason: String, info:[String: Any]? = nil) {
         print(reason, info ?? "")
-        let err = NSError(domain: reason, code: code, userInfo: info)
-        Bugsnag.notifyError(err)
+        var msg = " -> " + reason
+        if info != nil {
+            if let theJSONData = try? JSONSerialization.data(withJSONObject: info!, options: .prettyPrinted),
+                let theJSONText = String(data: theJSONData, encoding: String.Encoding.ascii) {
+                msg += " - " + theJSONText
+            }
+        }
+        Bugsnag.leaveBreadcrumb(withMessage: msg)
     }
+//
+//    static func sendError (_ reason: String, code: Int = 0, info:[String: Any]? = nil) {
+//        print(reason, info ?? "")
+//        let err = NSError(domain: reason, code: code, userInfo: info)
+//        Bugsnag.notifyError(err)
+//    }
     static func sendException (_ reason: String, info:[String: Any]? = nil) {
         print(reason, info ?? "")
         let exception = NSException(name:NSExceptionName(rawValue: "NamedException"),

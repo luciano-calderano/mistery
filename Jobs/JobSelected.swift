@@ -116,14 +116,6 @@ class JobSelected {
                 print(dict)
             } catch {
                 let suffix = UIImage(data: response) == nil ? "pdf" : "jpg"
-//                if suffix == "jpg",
-//                    let source = CGImageSourceCreateWithData(response as CFData, nil),
-//                    let metadata = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as? [CFString: String] {
-//                    let date = metadata[kCGImagePropertyTIFFDateTime] ?? ""
-//                    let dateStamp = metadata[kCGImagePropertyGPSDateStamp] ?? ""
-//                    let timeStamp = metadata[kCGImagePropertyGPSTimeStamp] ?? ""
-//                    print(metadata, date, dateStamp, timeStamp)
-//                }
                 let fileName = Current.jobPath + "\(Current.job.reference).\(kpiId).\(suffix)"
                 let url = URL(fileURLWithPath: fileName)
                 do {

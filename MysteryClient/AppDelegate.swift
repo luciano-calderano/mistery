@@ -155,12 +155,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
         User.shared.tokenPush = token
-        bugsnag.sendError("Device Token: \(token)")
+        bugsnag.sendMsg("Device Token: \(token)")
     }
     
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        bugsnag.sendError("Failed to register: \(error.localizedDescription)", code: -1)
+        bugsnag.sendMsg("Failed to register: \(error.localizedDescription)")
     }
     
     func application(_ application: UIApplication,
@@ -168,8 +168,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                      fetchCompletionHandler completionHandler:
         @escaping (UIBackgroundFetchResult) -> Void) {
         
-        bugsnag.sendError("Userinfo: didReceiveRemoteNotification", code: 0,
-                          info: userInfo as? [String : Any] ?? [:])
+        bugsnag.sendMsg("Userinfo: didReceiveRemoteNotification", info: userInfo as? [String : Any])
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -177,8 +176,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping () -> Void) {
         
         let userInfo = response.notification.request.content.userInfo
-        bugsnag.sendError("Userinfo: userNotificationCenter", code: 0,
-                          info: userInfo as? [String : Any] ?? [:])
+        bugsnag.sendMsg("Userinfo: userNotificationCenter", info: userInfo as? [String : Any])
         completionHandler()
     }
 }
