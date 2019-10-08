@@ -29,6 +29,7 @@ class KpiLastView: KpiBaseView {
         finalText.layer.borderColor = UIColor.lightGray.cgColor
         finalText.layer.borderWidth = 1
         finalText.delegate = self
+        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
     }
     
     override func didMoveToSuperview() {

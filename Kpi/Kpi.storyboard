@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +11,7 @@
         <!--Kpi Main-->
         <scene sceneID="TXy-rc-Ckr">
             <objects>
-                <viewController storyboardIdentifier="KpiMain" id="DeK-Oe-vYn" customClass="KpiMain" customModule="MysteryClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="KpiMain" id="DeK-Oe-vYn" customClass="KpiMain" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TLD-UD-39G"/>
                         <viewControllerLayoutGuide type="bottom" id="SsJ-GW-qqh"/>
@@ -22,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhn-XK-Jsy" customClass="HeaderContainerView" customModule="MysteryClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="55"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zhn-XK-Jsy" customClass="HeaderContainerView" customModule="Easy_audit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="Jfj-lq-V59"/>
@@ -34,10 +32,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="26v-Tf-RxW">
-                                <rect key="frame" x="1" y="76" width="373" height="545"/>
+                                <rect key="frame" x="1" y="56" width="373" height="565"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tf8-tn-rgc">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="545"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="565"/>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,7 +49,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVF-yU-hwJ" userLabel="ViewBottom">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-qe-eSg" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUk-qe-eSg" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="1" y="1" width="186" height="43"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -62,12 +60,12 @@
                                             <action selector="prevTapped" destination="DeK-Oe-vYn" eventType="touchUpInside" id="cW7-CM-3x7"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-IX-nVf" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-IX-nVf" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="188" y="1" width="186" height="43"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="#next" image="ico.nextGreen">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="titleColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="nextTapped" destination="DeK-Oe-vYn" eventType="touchUpInside" id="WP7-cp-RTy"/>
@@ -88,7 +86,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNQ-Ps-ylt">
-                                <rect key="frame" x="325" y="25" width="45" height="45"/>
+                                <rect key="frame" x="325" y="5" width="45" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="fTd-4l-C9H"/>
                                     <constraint firstAttribute="width" constant="45" id="pfT-Jd-hT1"/>

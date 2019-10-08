@@ -16,23 +16,24 @@ class MYTextField: UITextField {
     
     required internal init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initialize()
+        initialize()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.initialize()
+        initialize()
     }
     override internal func awakeFromNib() {
         super.awakeFromNib()
-        self.initialize()
+        initialize()
     }
     
     fileprivate func initialize () {
-        self.placeholder = self.placeholder?.toLang()
-        self.spellCheckingType = .no
-        self.autocorrectionType = .no
-        self.autocapitalizationType = (self.keyboardType == .default) ? .sentences : .none
+        placeholder = self.placeholder?.toLang()
+        spellCheckingType = .no
+        autocorrectionType = .no
+        autocapitalizationType = (self.keyboardType == .default) ? .sentences : .none
+        backgroundColor = .white
     }
     
     func showError () {

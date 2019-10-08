@@ -48,6 +48,8 @@ class SubDatePicker: KpiBaseSubView, UIPickerViewDelegate {
             kpiPicker.datePickerMode = .dateAndTime
         }
         kpiPicker.minuteInterval = 1
+        kpiPicker.setValue(UIColor.black, forKeyPath: "textColor")
+
     }
     
     override func getValuation () -> KpiResponseValues {

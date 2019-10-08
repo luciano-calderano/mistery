@@ -26,7 +26,7 @@
         <!--Main-->
         <scene sceneID="h6u-CX-YrH">
             <objects>
-                <viewController storyboardIdentifier="Main" id="A3O-9H-HdG" customClass="Main" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Main" interfaceStyle="light" id="A3O-9H-HdG" customClass="Main" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VY4-m6-sJW"/>
                         <viewControllerLayoutGuide type="bottom" id="1sm-oQ-rgX"/>
@@ -61,6 +61,7 @@
                                                     <rect key="frame" x="0.0" y="8" width="343" height="48"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

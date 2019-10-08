@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="adJ-sP-hVP">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="adJ-sP-hVP">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Jobs Home-->
         <scene sceneID="xJH-Oa-3v3">
             <objects>
-                <viewController storyboardIdentifier="JobsHome" id="adJ-sP-hVP" customClass="JobsHome" customModule="MysteryClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JobsHome" interfaceStyle="light" id="adJ-sP-hVP" customClass="JobsHome" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sGi-ru-2RN"/>
                         <viewControllerLayoutGuide type="bottom" id="KCU-Kf-66O"/>
@@ -21,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgE-AS-Fsa" customClass="HeaderContainerView" customModule="MysteryClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="55"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgE-AS-Fsa" customClass="HeaderContainerView" customModule="Easy_audit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="CJv-Am-iDu"/>
@@ -37,14 +35,14 @@
                                 <rect key="frame" x="0.0" y="67" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobsHomeCell" rowHeight="120" id="dlN-xa-jb3" customClass="JobsHomeCell" customModule="MysteryClient" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JobsHomeCell" rowHeight="120" id="dlN-xa-jb3" customClass="JobsHomeCell" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dlN-xa-jb3" id="SUC-Ks-xWJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-eh-v3X" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUL-eh-v3X" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="50" y="22" width="310" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="24" id="hhw-gB-72w"/>
@@ -52,43 +50,46 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addr." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnJ-zf-ORg" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Addr." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lnJ-zf-ORg" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="50" y="51" width="278" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="52" id="9l7-av-6bj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rif. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLZ-Tj-CAi" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
-                                                    <rect key="frame" x="50" y="95" width="278" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rif. " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLZ-Tj-CAi" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
+                                                    <rect key="frame" x="50" y="95.5" width="278" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="PTA-x9-vEd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHV-a4-ZbS" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dd" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHV-a4-ZbS" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="2" y="46" width="44" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="44" id="BYF-we-InR"/>
                                                         <constraint firstAttribute="height" constant="30" id="Um4-cq-zZK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-jk-5LL" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mmm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnW-jk-5LL" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="2" y="76" width="44" height="18"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="18" id="HaN-sR-Y3m"/>
                                                         <constraint firstAttribute="width" constant="44" id="O1q-WA-qdU"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haH-R7-rk4">
-                                                    <rect key="frame" x="331" y="51" width="32" height="32"/>
+                                                    <rect key="frame" x="331" y="51.5" width="32" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="Gb1-8O-8s4"/>
                                                         <constraint firstAttribute="height" constant="32" id="XnC-Vi-dg0"/>
@@ -98,7 +99,7 @@
                                                         <action selector="mapTapped" destination="dlN-xa-jb3" eventType="touchUpInside" id="kTV-gR-21i"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IRREGOLARE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XG-Qq-2Tf" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IRREGOLARE" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XG-Qq-2Tf" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="50" y="4" width="310" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -137,7 +138,7 @@
                                             <outlet property="warn" destination="7XG-Qq-2Tf" id="4x8-a1-XP2"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UploadCell" rowHeight="80" id="k4X-fv-OzQ" customClass="UploadCell" customModule="MysteryClient" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UploadCell" rowHeight="80" id="k4X-fv-OzQ" customClass="UploadCell" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="148" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4X-fv-OzQ" id="7o5-FK-iyy">
@@ -148,14 +149,14 @@
                                                     <rect key="frame" x="10" y="10" width="355" height="60"/>
                                                     <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prA-Tr-zzl" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prA-Tr-zzl" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="145.5" y="25.5" width="214.5" height="29"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trasmetti incarico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-zr-f7A">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trasmetti incarico" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoG-zr-f7A" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="31.5" width="115.5" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -210,7 +211,7 @@
         <!--Job Detail-->
         <scene sceneID="hLa-Uw-Rac">
             <objects>
-                <viewController storyboardIdentifier="JobDetail" id="FC9-J1-Ozm" customClass="JobDetail" customModule="MysteryClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JobDetail" id="FC9-J1-Ozm" customClass="JobDetail" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yWU-b2-IQc"/>
                         <viewControllerLayoutGuide type="bottom" id="9J0-V0-Hk9"/>
@@ -219,8 +220,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="665"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNs-30-P4x" customClass="HeaderContainerView" customModule="MysteryClient" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="55"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNs-30-P4x" customClass="HeaderContainerView" customModule="Easy_audit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="hxo-Fs-9tm"/>
@@ -231,7 +232,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqW-eh-1Cr">
-                                <rect key="frame" x="0.0" y="75" width="375" height="530"/>
+                                <rect key="frame" x="0.0" y="55" width="375" height="550"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgH-8t-sWY">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
@@ -252,7 +253,7 @@
                                                             <constraint firstAttribute="height" constant="130" id="Yus-IV-avu"/>
                                                         </constraints>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuA-Pf-pMu" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuA-Pf-pMu" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                         <rect key="frame" x="8" y="158" width="316" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,7 +290,7 @@
                                                                     <outletCollection property="gestureRecognizers" destination="3sQ-2g-V7G" appends="YES" id="uZz-15-NcX"/>
                                                                 </connections>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Th-4vF" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFc-Th-4vF" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="56" y="63" width="309" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="vD1-hT-Rvf"/>
@@ -298,7 +299,7 @@
                                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrF-YZ-Gww" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrF-YZ-Gww" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="56" y="13" width="309" height="19.5"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="N1c-mJ-z5a"/>
@@ -326,14 +327,14 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISX-2N-sif">
                                                         <rect key="frame" x="0.0" y="285" width="375" height="115"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-P8-eYu" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gwQ-P8-eYu" customClass="MYButtonGreen" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="10" width="170" height="46"/>
                                                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="46" id="cry-Kb-bBN"/>
                                                                 </constraints>
                                                                 <state key="normal" title="#jobDesc">
-                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -344,7 +345,7 @@
                                                                     <action selector="descTapped" destination="FC9-J1-Ozm" eventType="touchUpInside" id="MNS-FF-J2M"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xc-kd-AyD" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xc-kd-AyD" customClass="MYButtonGreen" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="193" y="10" width="170" height="46"/>
                                                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -362,7 +363,7 @@
                                                                     <action selector="atchTapped" destination="FC9-J1-Ozm" eventType="touchUpInside" id="Oh8-by-nK3"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRj-3Y-azG" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRj-3Y-azG" customClass="MYButtonGreen" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="64" width="170" height="46"/>
                                                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -380,7 +381,7 @@
                                                                     <action selector="spreTapped" destination="FC9-J1-Ozm" eventType="touchUpInside" id="XXi-A1-TSm"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfo-3m-nur" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xfo-3m-nur" customClass="MYButtonGreen" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="193" y="64" width="170" height="46"/>
                                                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
@@ -421,7 +422,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ReD-uP-KVj">
                                                         <rect key="frame" x="0.0" y="400" width="375" height="123"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njB-2Y-bKe" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njB-2Y-bKe" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="10" y="7" width="357" height="46"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -439,7 +440,7 @@
                                                                     <action selector="contTapped" destination="FC9-J1-Ozm" eventType="touchUpInside" id="32T-JY-iPc"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8w-Tp-Wyx" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8w-Tp-Wyx" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                                                 <rect key="frame" x="10" y="66" width="357" height="46"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <constraints>
@@ -517,7 +518,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC6-RO-MEG" userLabel="View bottom">
                                 <rect key="frame" x="0.0" y="605" width="375" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-x4-jcP" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWu-x4-jcP" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -528,7 +529,7 @@
                                             <action selector="strtTapped" destination="FC9-J1-Ozm" eventType="touchUpInside" id="iWa-5p-av5"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wn-xV-krV" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wn-xV-krV" customClass="MYButton" customModule="Easy_audit" customModuleProvider="target">
                                         <rect key="frame" x="188" y="0.0" width="187" height="60"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -599,7 +600,7 @@
         <!--Job Detail Notes-->
         <scene sceneID="atW-jn-X8t">
             <objects>
-                <viewController storyboardIdentifier="JobDetailNotes" id="UB2-eq-rKc" customClass="JobDetailNotes" customModule="MysteryClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JobDetailNotes" id="UB2-eq-rKc" customClass="JobDetailNotes" customModule="Easy_audit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6mW-L9-oJJ"/>
                         <viewControllerLayoutGuide type="bottom" id="A2F-QX-cja"/>
@@ -608,8 +609,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he1-es-gC6" customClass="MYButton" customModule="MysteryClient" customModuleProvider="target">
-                                <rect key="frame" x="127.5" y="390" width="120" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="he1-es-gC6" customClass="MYButtonGreen" customModule="Easy_audit" customModuleProvider="target">
+                                <rect key="frame" x="127.5" y="370" width="120" height="46"/>
                                 <color key="backgroundColor" red="0.67843137249999996" green="0.81960784310000001" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="Q6j-XK-7pn"/>
@@ -628,13 +629,13 @@
                                     <action selector="okTapped" destination="UB2-eq-rKc" eventType="touchUpInside" id="oEL-8r-acD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy7-xo-UiW" customClass="MYLabel" customModule="MysteryClient" customModuleProvider="target">
-                                <rect key="frame" x="16" y="220" width="343" height="150"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yy7-xo-UiW" customClass="MYLabel" customModule="Easy_audit" customModuleProvider="target">
+                                <rect key="frame" x="16" y="200" width="343" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="HUz-Gz-TgO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kU7-t4-Qo5">
@@ -645,7 +646,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="sRk-ej-XI1">
-                                <rect key="frame" x="0.0" y="20" width="375" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -680,7 +681,7 @@
         <image name="ico.pinMap" width="256" height="256"/>
         <image name="ico.shop" width="104" height="104"/>
         <image name="ico.ticket" width="80" height="80"/>
-        <image name="photo" width="1439" height="661"/>
+        <image name="photo" width="1280" height="588"/>
         <image name="reload" width="100" height="100"/>
     </resources>
 </document>

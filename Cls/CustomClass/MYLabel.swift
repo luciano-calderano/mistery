@@ -34,7 +34,7 @@ class MYLabel: UILabel {
     fileprivate func initialize () {
         minimumScaleFactor = 0.75
         adjustsFontSizeToFitWidth = true
-        font = UIFont.size(font.pointSize)
+        font = UIFont.boldSystemFont(ofSize: font.pointSize)
         if let text = text {
             title = text
         }

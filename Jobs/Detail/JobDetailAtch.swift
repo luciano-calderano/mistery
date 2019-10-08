@@ -46,9 +46,11 @@ class JobDetailAtch: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: self.cellId)
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellId)
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: self.cellId)
+            cell = UITableViewCell(style: .default, reuseIdentifier: cellId)
+            cell?.textLabel?.textColor = .darkGray
+            cell?.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         }
 
         let item = Current.job.attachments[indexPath.row]

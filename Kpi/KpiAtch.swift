@@ -186,6 +186,7 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         let dest = CGImageDestinationCreateWithURL(cfPath!, uti, 1, nil)
         let metadata = addGps(coo: coo, time: time, date: date)
         print(metadata)
+        bugsnag.sendMsg("Nuovo exif", info: metadata as? [String : Any])
 
         CGImageDestinationAddImageFromSource(dest!, src, 0, metadata)
         if (CGImageDestinationFinalize(dest!)) {

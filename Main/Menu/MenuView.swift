@@ -125,7 +125,8 @@ extension MenuView: UITableViewDataSource {
         let item = dataArray[indexPath.row]
         cell.imageView!.image = item.icon
         cell.textLabel?.text = item.type.rawValue
-        cell.textLabel?.font = UIFont.size(14)
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        cell.textLabel?.textColor = UIColor.darkGray
         cell.backgroundColor = (item.type == currentItem) ? .lightGray : .white
         return cell
     }

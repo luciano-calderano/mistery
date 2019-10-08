@@ -7,6 +7,18 @@
 //
 
 import UIKit
+class MYButtonGreen: MYButton {
+    required internal init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        initialize()
+    }
+
+    override func initialize() {
+        super.initialize()
+        backgroundColor = UIColor(red: 173/255, green: 209/255, blue: 75/255, alpha: 1)
+        setTitleColor(.white, for: .normal)
+    }
+}
 
 class MYButton: UIButton {
     @IBInspectable var borderColor: UIColor = UIColor.clear  {
@@ -40,8 +52,9 @@ class MYButton: UIButton {
             setTitleColor(UIColor.white, for: UIControl.State.normal)
         }
         if let lbl = titleLabel {
-            lbl.font = UIFont.size(lbl.font.pointSize)
+            lbl.font = UIFont.boldSystemFont(ofSize: lbl.font.pointSize)
         }
+        setTitleColor(.darkGray, for: .normal)
         title = currentTitle ?? ""
     }
 }

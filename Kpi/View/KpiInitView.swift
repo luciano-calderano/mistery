@@ -28,6 +28,7 @@ class KpiInitView: KpiBaseView {
             btn?.layer.cornerRadius = (btn?.frame.size.height)! / 2
         }
         okTapped()
+        datePicker.setValue(UIColor.black, forKeyPath: "textColor")
         jobNotDoneReason.delegate = self
         for i in 0..<Current.job.kpis.count {
             let kpi = Current.job.kpis[i]
