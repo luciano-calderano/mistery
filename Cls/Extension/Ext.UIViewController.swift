@@ -24,6 +24,7 @@ extension UIViewController {
         let alert = UIAlertController(title: title as String, message: message as String, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: cancelBlock))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: okBlock))
+        alert.modalPresentationStyle = .fullScreen
 
         present(alert, animated: true, completion: nil)
     }

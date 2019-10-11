@@ -48,7 +48,7 @@ class KpiAtch: NSObject {
                                       style: .cancel,
                                       handler: { (action) in
         }))
-        
+
         mainVC.present(alert, animated: true) { }
     }
     
@@ -112,8 +112,25 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             if let imageSource = CGImageSourceCreateWithURL(url as CFURL, nil) {
                 let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil)
                 if let dict = imageProperties as? [String: Any] {
-                    bugsnag.sendMsg("Exif foto selezionata", info: dict)
+                    if let gps = dict[(kCGImagePropertyGPSDictionary as String)] as? [String: Any] {
+                        bugsnag.sendMsg("Gps foto selezionata", info: gps)
+                        if let cooLat = gps[(kCGImagePropertyGPSLatitude as String)] as? Double {
+                            locCoo.latitude = cooLat
+                        }
+                        if let cooLon = gps[(kCGImagePropertyGPSLongitude as String)] as? Double {
+                            locCoo.longitude = cooLon
+                        }
+                        if
+                            let date = gps[(kCGImagePropertyGPSDateStamp as String)] as? String,
+                            let time = gps[(kCGImagePropertyGPSTimeStamp as String)] as? String {
+                            if let d = convertDate((date + time)) {
+                                locDat = d
+                                return
+                            }
+                        }
+                    }
                     if let exif = dict[(kCGImagePropertyExifDictionary as String)] as? [String: Any] {
+                        bugsnag.sendMsg("Exif foto selezionata", info: dict)
                         if let date = exif[(kCGImagePropertyExifDateTimeOriginal as String)] as? String {
                             if let d = convertDate(date) {
                                 locDat = d
@@ -128,27 +145,13 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
                         }
                     }
                     if let iptc = dict[(kCGImagePropertyIPTCDictionary as String)] as? [String: Any] {
+                        bugsnag.sendMsg("Iptc foto selezionata", info: iptc)
                         if
                             let date = iptc[(kCGImagePropertyIPTCDateCreated as String)] as? String,
                             let time = iptc[(kCGImagePropertyIPTCTimeCreated as String)] as? String {
                             if let d = convertDate((date + time)) {
                                 locDat = d
                                 return
-                            }
-                        }
-                    }
-                    if let gps = dict[(kCGImagePropertyGPSDictionary as String)] as? [String: Any] {
-                        if let cooLat = gps[(kCGImagePropertyGPSLatitude as String)] as? Double {
-                            locCoo.latitude = cooLat
-                        }
-                        if let cooLon = gps[(kCGImagePropertyGPSLongitude as String)] as? Double {
-                            locCoo.longitude = cooLon
-                        }
-                        if
-                            let date = gps[(kCGImagePropertyGPSDateStamp as String)] as? String,
-                            let time = gps[(kCGImagePropertyGPSTimeStamp as String)] as? String {
-                            if let d = convertDate((date + time)) {
-                                locDat = d
                             }
                         }
                     }

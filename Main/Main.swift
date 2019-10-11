@@ -17,6 +17,7 @@ class Main: MYViewController {
         super.viewDidLoad()
   
         print(Config.Path.docs)
+//        _ = LCGps()
         MYGps.shared.start { (coo) in
             print(coo)
         }
@@ -36,7 +37,9 @@ class Main: MYViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        MYUpload.startUpload()
+        if User.shared.getUsername().count > 0 {
+            MYUpload.startUpload()
+        }
         clearTmp()
     }
     

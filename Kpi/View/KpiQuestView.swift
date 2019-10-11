@@ -204,7 +204,8 @@ class KpiQuestView: KpiBaseView {
                                       handler: { (action) in
                                         completion(true)
         }))
-        
+        alert.modalPresentationStyle = .fullScreen
+
         mainVC.present(alert, animated: true) { }
     }
     

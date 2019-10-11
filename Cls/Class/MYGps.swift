@@ -6,8 +6,57 @@
 //  Copyright © 2018 Mebius. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import CoreLocation
+/*
+class LCGps: NSObject {
+    static var coordinate = CLLocationCoordinate2D()
+    private let locationManager = CLLocationManager()
+    
+    override init() {
+        super.init()
+//        _ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true, block: { timer in
+//            self.start()
+//        })
+//
+//        let authorizationStatus = CLLocationManager.authorizationStatus()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 100
+//        if authorizationStatus != .authorizedWhenInUse {
+            locationManager.requestWhenInUseAuthorization()
+//        }
+    }
+    
+    private func start () {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
+}
+
+extension LCGps: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            print("User allowed us to access location")
+            start()
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let pos = manager.location?.coordinate {
+            LCGps.coordinate = pos
+            print("New pos: \(pos)")
+//            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location updates error \(error)")
+    }
+
+}
+ */
 
 class MYGps: NSObject {
     static let shared = MYGps()
@@ -23,16 +72,16 @@ class MYGps: NSObject {
 
     override init() {
         super.init()
+        locationManager.delegate = self
         if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
             locationManager.requestWhenInUseAuthorization()
         }
         if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.requestLocation()
         }
     }
-    public func start (_ response: @escaping (CLLocationCoordinate2D)->()) {
+    func start (_ response: @escaping (CLLocationCoordinate2D)->()) {
         closure = response
         locationManager.requestLocation()
     }
@@ -59,3 +108,4 @@ extension MYGps: CLLocationManagerDelegate {
         print("Location updates error \(error)")
     }
 }
+

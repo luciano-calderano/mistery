@@ -28,6 +28,7 @@ class JobsHome: MYViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.addSubview(refreshControl)
+
         //        MYJob.shared.clearJobs()
     }
     

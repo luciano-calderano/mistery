@@ -127,6 +127,7 @@ class JobDetail: MYViewController {
         
         if (Current.job.notes.count > 0) {
             let ctrl = JobDetailNotes.Instance()
+            ctrl.modalPresentationStyle = .fullScreen
             ctrl.navi = navigationController!
             present(ctrl, animated: true, completion: nil)
         }

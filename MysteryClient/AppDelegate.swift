@@ -52,7 +52,7 @@ extension AppDelegate {
         guard let appStoreVersion = result["version"] as? String else { return }
         
         let currentVersion = infoDictionary["CFBundleShortVersionString"] as? String ?? ""
-        if ("2." + appStoreVersion != currentVersion) {
+        if (appStoreVersion != currentVersion) {
             showAlert()
         }
     }
