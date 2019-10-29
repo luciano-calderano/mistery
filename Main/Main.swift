@@ -15,13 +15,8 @@ class Main: MYViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-  
         print(Config.Path.docs)
-//        _ = LCGps()
-        MYGps.shared.start { (coo) in
-            print(coo)
-        }
-
+        
         let imv = UIImageView(image: UIImage(named: "back"))
         view.addSubviewWithConstraints(imv, top: 40)
         view.sendSubviewToBack(imv)
@@ -37,10 +32,10 @@ class Main: MYViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if User.shared.getUsername().count > 0 {
-            MYUpload.startUpload()
+        if User.shared.getUsername().isEmpty {
+            return
         }
-        clearTmp()
+        MainOnAppear.execute()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,14 +64,6 @@ class Main: MYViewController {
         let loginView = LoginView.Instance()
         view.addSubviewWithConstraints(loginView)
         loginView.delegate = self
-    }
-    
-    private func clearTmp() {
-        let tmp = NSTemporaryDirectory()
-        let fm = FileManager.default
-        for f in try! fm.contentsOfDirectory(atPath: tmp) {
-            try? fm.removeItem(at: URL(fileURLWithPath: tmp + f))
-        }
     }
 }
 

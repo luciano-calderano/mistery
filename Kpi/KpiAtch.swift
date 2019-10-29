@@ -17,7 +17,6 @@ class KpiAtch: NSObject {
     var mainVC: UIViewController
     var delegate: KpiAtchDelegate?
     private var destFile = ""
-    private var currentCoordinateGps = MYGps.shared.lastPosition
 
     init(mainViewCtrl: UIViewController) {
         mainVC = mainViewCtrl
@@ -25,10 +24,6 @@ class KpiAtch: NSObject {
     
     func showArchSelection (file: String = "") {
         destFile = file
-        MYGps.shared.start { (coordinateGps) in
-            self.currentCoordinateGps = coordinateGps
-        }
-
         let alert = UIAlertController(title: Lng("uploadPic") as String,
                                       message: "" as String,
                                       preferredStyle: .actionSheet)

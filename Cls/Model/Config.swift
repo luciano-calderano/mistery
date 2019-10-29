@@ -88,6 +88,9 @@ struct Config {
         static let Ora           = "HH:mm"
         static let DataJson      = "yyyy-MM-dd"
         static let DataOraJson   = "yyyy-MM-dd HH:mm:ss"
+        static let dataOutput    = "dd/MM/yyyy"
+        static let dataOraOutput = "dd/MM/yyyy HH:mm"
+
     }
 
     static let maxPicSize:CGFloat = 1200

@@ -29,16 +29,14 @@ class JobDetail: MYViewController {
     @IBOutlet var strtBtn: MYButton!
     @IBOutlet var stopBtn: MYButton!
     
-    private let dataOutput = "dd/MM/yyyy"
-    private let dataOraOutput = "dd/MM/yyyy HH:mm"
     private var executionDate = Lng("exeJob") + "\n"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         header?.header.titleLabel.text = Current.job.store.name
         checkLocationServices()
-        executionDate = executionDate.replacingOccurrences(of: "$1", with: Current.job.start_date.toString(withFormat:dataOutput))
-        executionDate = executionDate.replacingOccurrences(of: "$2", with: Current.job.end_date.toString(withFormat: dataOutput))
+        executionDate = executionDate.replacingOccurrences(of: "$1", with: Current.job.start_date.toString(withFormat: Config.DateFmt.dataOutput))
+        executionDate = executionDate.replacingOccurrences(of: "$2", with: Current.job.end_date.toString(withFormat: Config.DateFmt.dataOutput))
         
         nameLabel.text = Current.job.store.name
         addrLabel.text = Current.job.store.address
@@ -116,12 +114,9 @@ class JobDetail: MYViewController {
         if Current.result.execution_date.isEmpty {
             guard Current.job.learning_done else {
                 openWeb(type: .none, urlPage:  Current.job.learning_url)
-//                Current.job.learning_done = true
-//                MYResult.shared.saveCurrentResult()
                 loadAndShowResult()
                 return
             }
-//            Current.result.estimate_date = Date().toString(withFormat: Config.DateFmt.DataJson)
             MYResult.shared.saveCurrentResult()
         }
         
@@ -148,47 +143,29 @@ class JobDetail: MYViewController {
         Current.result.execution_start_time = Date().toString(withFormat: Config.DateFmt.Ora)
         Current.result.positioning.start_date = Date().toString(withFormat: Config.DateFmt.DataOraJson)
         Current.result.positioning.start = true
-        Current.result.positioning.start_lat = MYGps.shared.lastPosition.latitude
-        Current.result.positioning.start_lng = MYGps.shared.lastPosition.longitude
+        Current.result.positioning.start_lat = MYGps.coordinate.latitude
+        Current.result.positioning.start_lng = MYGps.coordinate.longitude
         MYResult.shared.saveCurrentResult()
         
         showData()
         setExecutionTimeButtons()
-        
-        MYGps.shared.start { (coo) in
-            Current.result.positioning.start_lat = coo.latitude
-            Current.result.positioning.start_lng = coo.longitude
-            MYResult.shared.saveCurrentResult()
-        }
     }
+
     @IBAction func stopTapped () {
         Current.result.execution_end_time = Date().toString(withFormat: Config.DateFmt.Ora)
         Current.result.positioning.end = true
         Current.result.positioning.end_date = Date().toString(withFormat: Config.DateFmt.DataOraJson)
-        Current.result.positioning.end_lat = MYGps.shared.lastPosition.latitude
-        Current.result.positioning.end_lng = MYGps.shared.lastPosition.longitude
+        Current.result.positioning.end_lat = MYGps.coordinate.latitude
+        Current.result.positioning.end_lng = MYGps.coordinate.longitude
         MYResult.shared.saveCurrentResult()
         showData()
         setExecutionTimeButtons()
-
-        MYGps.shared.start { (coo) in
-            Current.result.positioning.end_lat = coo.latitude
-            Current.result.positioning.end_lng = coo.longitude
-            MYResult.shared.saveCurrentResult()
-        }
     }
     
     //MARK:- private -
     
     private func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
-            let lm = CLLocationManager.authorizationStatus()
-            if  lm == .authorizedAlways ||
-                lm == .authorizedWhenInUse {
-                MYGps.shared.start { (coo) in
-                    print(coo)
-                }
-            }
             return
         }
         
@@ -200,18 +177,18 @@ class JobDetail: MYViewController {
     }
     
     private func showData () {
-        var verIni = Current.job.execution_date?.toString(withFormat: dataOutput) ?? ""
-        var verFin = Current.job.execution_date?.toString(withFormat: dataOutput) ?? ""
+        var verIni = Current.job.execution_date?.toString(withFormat: Config.DateFmt.dataOutput) ?? ""
+        var verFin = Current.job.execution_date?.toString(withFormat: Config.DateFmt.dataOutput) ?? ""
 
         if verIni.isEmpty, Current.result.execution_start_time.count > 0 {
-            verIni = Current.result.execution_date.dateConvert(fromFormat: Config.DateFmt.DataJson, toFormat: dataOutput)
+            verIni = Current.result.execution_date.dateConvert(fromFormat: Config.DateFmt.DataJson, toFormat: Config.DateFmt.dataOutput)
             verIni += " " + Current.result.execution_start_time
         } else {
             verIni += " " + Current.job.execution_start_time
         }
 
         if verFin.isEmpty, Current.result.execution_end_time.count > 0 {
-            verFin = Current.result.execution_date.dateConvert(fromFormat: Config.DateFmt.DataJson, toFormat: dataOutput)
+            verFin = Current.result.execution_date.dateConvert(fromFormat: Config.DateFmt.DataJson, toFormat: Config.DateFmt.dataOutput)
             verFin += " " + Current.result.execution_end_time
         } else {
             verFin += " " + Current.job.execution_end_time
@@ -220,7 +197,7 @@ class JobDetail: MYViewController {
         infoLabel.text =
             executionDate +
             Lng("detJobTime") + ": \(Current.job.details)\n" +
-            Lng("prenot") + ": \(Current.job.booking_date.toString(withFormat: dataOutput))\n" +
+            Lng("prenot") + ": \(Current.job.booking_date.toString(withFormat: Config.DateFmt.dataOutput))\n" +
             Lng("rifNum") + ": \(Current.job.reference)\n" +
             Lng("verIni") + ": \(verIni)\n" +  Lng("verEnd") + ": \(verFin)"
     }

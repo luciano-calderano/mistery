@@ -154,6 +154,8 @@
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
 		8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
+		8BD233B723509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
+		8BD233B823509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
 		8BF04F19214A9AD500ADF6E0 /* JobDetailNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */; };
 /* End PBXBuildFile section */
 
@@ -263,6 +265,7 @@
 		8B5786E0233241EA00C7C0E6 /* MysteryClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MysteryClient.entitlements; sourceTree = "<group>"; };
 		8BAE0892211C432600911B4E /* MYGps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYGps.swift; sourceTree = "<group>"; };
 		8BAE9F57231EAE730083DF5C /* MYHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYHud.swift; sourceTree = "<group>"; };
+		8BD233B623509875005E345E /* MainOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnAppear.swift; sourceTree = "<group>"; };
 		8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailNotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -514,6 +517,7 @@
 				4B43C492208E07CB0073D566 /* Main.swift */,
 				4B1B0ACE208F7AF1009E9633 /* Login */,
 				4B311345207E174700BA77D8 /* Menu */,
+				8BD233B623509875005E345E /* MainOnAppear.swift */,
 			);
 			path = Main;
 			sourceTree = SOURCE_ROOT;
@@ -824,6 +828,7 @@
 				4B30C200207F59270018BD6C /* KpiMain.swift in Sources */,
 				04A2109A1F03A82A00D1480C /* JobDetailDesc.swift in Sources */,
 				4B30C1F9207F59270018BD6C /* KpiMainUtil.swift in Sources */,
+				8BD233B723509875005E345E /* MainOnAppear.swift in Sources */,
 				8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */,
 				048C44871F5B183D00E836C0 /* ResultStruct.swift in Sources */,
 				4B30C1F8207F59270018BD6C /* KpiBaseView.swift in Sources */,
@@ -881,6 +886,7 @@
 				8B1CAB612338AB9300B987C6 /* KpiMain.swift in Sources */,
 				8B1CAB622338AB9300B987C6 /* JobDetailDesc.swift in Sources */,
 				8B1CAB632338AB9300B987C6 /* KpiMainUtil.swift in Sources */,
+				8BD233B823509875005E345E /* MainOnAppear.swift in Sources */,
 				8B1CAB642338AB9300B987C6 /* MYHud.swift in Sources */,
 				8B1CAB652338AB9300B987C6 /* ResultStruct.swift in Sources */,
 				8B1CAB662338AB9300B987C6 /* KpiBaseView.swift in Sources */,

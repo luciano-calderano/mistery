@@ -46,6 +46,8 @@
 	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>L'app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>L'app vorrebbe usare il contenuto della galleria per permetterti di selezionare una foto.</string>
 	<key>UIBackgroundModes</key>

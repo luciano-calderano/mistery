@@ -22,6 +22,7 @@ class MYViewController: UIViewController, HeaderViewDelegate {
             header.delegate = self
             header.header.kpiLabel.isHidden = true
         }
+        MYGps.getLocation()
     }
     
     func headerViewSxTapped() {
