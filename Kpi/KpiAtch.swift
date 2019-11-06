@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import MobileCoreServices
 
 protocol KpiAtchDelegate {
     func kpiAtchselectPhotoValid(_ isValid: Bool)
@@ -68,6 +69,7 @@ class KpiAtch: NSObject {
     
     private func presentPicker (type: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
+        picker.mediaTypes = [kUTTypeImage, kUTTypeLivePhoto] as [String]
         picker.delegate = self
         picker.sourceType = type
         picker.allowsEditing = false
@@ -90,6 +92,14 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let live = info[UIImagePickerController.InfoKey.livePhoto] as? PHLivePhoto {
+            mainVC.alert("Attenzione!", message: """
+Live photo non ancora supportato in questa versione.
+Si prega di usare la modalità fotocamera standard.
+Grazie
+""")
+            return
+        }
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
@@ -158,6 +168,10 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
             let picUrl = info[UIImagePickerController.InfoKey.imageURL] as! URL
             readImageData(url: picUrl)
         }
+        else {
+            UIImageWriteToSavedPhotosAlbum(pickedImage, self,
+                                           #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        }
 
         func utcConvert(_ d: Date) -> (date: String, time: String) {
             let df = DateFormatter()
@@ -175,6 +189,10 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
         close()
     }
     
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        print(error ?? "Immagine salvata nella galleria")
+    }
+
     private func crea(img: UIImage, coo: CLLocationCoordinate2D, time: String, date: String) {
         let jpeg = img.jpegData(compressionQuality: 0.7)!
         let src = CGImageSourceCreateWithData(jpeg as CFData, nil)!

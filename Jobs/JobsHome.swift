@@ -13,13 +13,7 @@ class JobsHome: MYViewController {
         return Instance(sbName: "Jobs", isInitial: true) as! JobsHome
     }
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
-        refreshControl.tintColor = UIColor.red
-        return refreshControl
-    }()
-    
+    private var refreshControl: UIRefreshControl?
     private var zipFilesList = [URL]()
     
     @IBOutlet private var tableView: UITableView!
@@ -27,13 +21,16 @@ class JobsHome: MYViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
-        tableView.addSubview(refreshControl)
-
-        //        MYJob.shared.clearJobs()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if refreshControl == nil {
+            let refreshControl = UIRefreshControl()
+            refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+            refreshControl.tintColor = UIColor.red
+            tableView.refreshControl = refreshControl
+        }
         
         Current.job = Job()
         Current.result = JobResult()

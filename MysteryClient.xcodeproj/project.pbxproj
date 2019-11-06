@@ -156,6 +156,8 @@
 		8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
 		8BD233B723509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
 		8BD233B823509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
+		8BDDBC702372CDD200744A35 /* EA-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8B2338AB9400B987C6 /* EA-Info.plist */; };
+		8BDDBC722372CE2F00744A35 /* MC-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04BC640F1EFD830E00C0912D /* MC-Info.plist */; };
 		8BF04F19214A9AD500ADF6E0 /* JobDetailNotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */; };
 /* End PBXBuildFile section */
 
@@ -636,6 +638,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDDBC722372CE2F00744A35 /* MC-Info.plist in Resources */,
 				4B30C203207F59270018BD6C /* SubText.xib in Resources */,
 				04A2109E1F03AC3400D1480C /* JobDetailAtch.xib in Resources */,
 				4B30C20C207F59270018BD6C /* SubRadioCell.xib in Resources */,
@@ -680,6 +683,7 @@
 				8B1CAB7A2338AB9300B987C6 /* SubRadio.xib in Resources */,
 				8B1CAB7B2338AB9300B987C6 /* KpiInitView.xib in Resources */,
 				8B1CAB7C2338AB9300B987C6 /* LaunchScreen.storyboard in Resources */,
+				8BDDBC702372CDD200744A35 /* EA-Info.plist in Resources */,
 				8B1CAB7D2338AB9300B987C6 /* SubLabel.xib in Resources */,
 				8B1CAB7E2338AB9300B987C6 /* KpiLastView.xib in Resources */,
 				8B1CAB7F2338AB9300B987C6 /* Main.storyboard in Resources */,
@@ -1019,7 +1023,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191003;
+				CURRENT_PROJECT_VERSION = 191106;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1028,7 +1032,7 @@
 				INFOPLIST_FILE = "MysteryClient/MC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = it.mebius.Mystery.Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1044,7 +1048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191003;
+				CURRENT_PROJECT_VERSION = 191106;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1053,7 +1057,7 @@
 				INFOPLIST_FILE = "MysteryClient/MC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.2;
+				MARKETING_VERSION = 2.3;
 				PRODUCT_BUNDLE_IDENTIFIER = it.mebius.Mystery.Client;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -1068,7 +1072,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 190928;
+				CURRENT_PROJECT_VERSION = 191105;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1098,7 +1102,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 190928;
+				CURRENT_PROJECT_VERSION = 191105;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
