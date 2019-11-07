@@ -39,7 +39,7 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Uso foto?</string>
+	<string>L'app vorrebbe usare la tua fotocamera per scattare le foto, ove richieste, da allegare all'incarico.</string>
 	<key>NSLocationAlwaysAndWhenInUsageDescription</key>
 	<string>La geo localizzazione è necessaria per poter verificare che l'incarico è stato svolto nel posto e nell'orario  corretti. L'uso della localizzazione è spiegato correttamente nella nostra informativa privacy</string>
 	<key>NSLocationAlwaysUsageDescription</key>
