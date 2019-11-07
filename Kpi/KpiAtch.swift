@@ -92,14 +92,6 @@ extension KpiAtch: UIImagePickerControllerDelegate, UINavigationControllerDelega
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let live = info[UIImagePickerController.InfoKey.livePhoto] as? PHLivePhoto {
-            mainVC.alert("Attenzione!", message: """
-Live photo non ancora supportato in questa versione.
-Si prega di usare la modalità fotocamera standard.
-Grazie
-""")
-            return
-        }
         guard let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
