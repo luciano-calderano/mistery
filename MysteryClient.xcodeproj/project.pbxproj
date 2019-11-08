@@ -152,7 +152,6 @@
 		8B1CAB8F2338C23B00B987C6 /* AppConfigEA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */; };
 		8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF02338DA78000C6A16 /* MC.xcassets */; };
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
-		8B5AEDE92374558500330DEF /* info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04BC640F1EFD830E00C0912D /* info.plist */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
 		8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
 		8BD233B723509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
@@ -204,7 +203,7 @@
 		04B1BAD41F459D3A007A1B64 /* MYHttp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYHttp.swift; sourceTree = "<group>"; };
 		04BC640D1EFD830E00C0912D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04BC640E1EFD830E00C0912D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04BC640F1EFD830E00C0912D /* info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
+		04BC640F1EFD830E00C0912D /* MC-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MC-Info.plist"; sourceTree = "<group>"; };
 		04BC64101EFD830E00C0912D /* Lang.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lang.txt; sourceTree = "<group>"; };
 		04BC64111EFD830E00C0912D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04BCAD331EFA9DCF00745556 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
@@ -399,7 +398,7 @@
 				10BE02BFF0AE8026C48A4C7A /* App */,
 				04BC640D1EFD830E00C0912D /* AppDelegate.swift */,
 				04BC640E1EFD830E00C0912D /* Assets.xcassets */,
-				04BC640F1EFD830E00C0912D /* info.plist */,
+				04BC640F1EFD830E00C0912D /* MC-Info.plist */,
 				8B1CAB8B2338AB9400B987C6 /* EA-Info.plist */,
 				04BC64111EFD830E00C0912D /* LaunchScreen.storyboard */,
 			);
@@ -646,7 +645,6 @@
 				4B30C209207F59270018BD6C /* SubCheckBox.xib in Resources */,
 				04A210981F03A81900D1480C /* JobDetailDesc.xib in Resources */,
 				4B30C1FD207F59270018BD6C /* KpiQuestView.xib in Resources */,
-				8B5AEDE92374558500330DEF /* info.plist in Resources */,
 				4B30C20B207F59270018BD6C /* SubDatePicker.xib in Resources */,
 				04FC17261F01330000226F1A /* WebPage.storyboard in Resources */,
 				4B261B0A208E20A00055520E /* LoginView.xib in Resources */,
@@ -1023,13 +1021,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191108;
+				CURRENT_PROJECT_VERSION = 191109;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = MysteryClient/info.plist;
+				INFOPLIST_FILE = "MysteryClient/MC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.3;
@@ -1048,13 +1046,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191108;
+				CURRENT_PROJECT_VERSION = 191109;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = MysteryClient/info.plist;
+				INFOPLIST_FILE = "MysteryClient/MC-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 2.3;
