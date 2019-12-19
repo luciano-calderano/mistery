@@ -8,91 +8,94 @@
 
 import UIKit
 
-@objc class MYHud: UIViewController {
-    private static var hud: MYHud?
-    @objc class func show () {
-        if hud == nil {
-            hud = MYHud()
-            hud!.show()
+public struct Loader {
+    private class LoaderView: UIView {
+        private var wait = UIActivityIndicatorView()
+        private func initialize() {
+            addSubview(wait)
+            frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+            wait.style = .whiteLarge
+            wait.center = center
         }
+        
+        override func willMove(toWindow newWindow: UIWindow?) {
+            if newWindow != nil, let v = superview {
+                center = v.center
+                wait.startAnimating()
+            }
+            else {
+                wait.stopAnimating()
+            }
+        }
+        
+        convenience init() {
+            self.init(frame: CGRect())
+            initialize()
+        }
+    }
+    
+    private class BackView: UIView {
+        private func initialize() {
+            blurOnView(self)
+        }
+
+        private func blurOnView(_ view: UIView) {
+            view.backgroundColor = .clear
+            let blurFx = UIBlurEffect(style: .dark)
+            let blurFxView = UIVisualEffectView(effect: blurFx)
+            blurFxView.frame = view.bounds
+            blurFxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            view.insertSubview(blurFxView, at: 0)
+        }
+                
+        override func willMove(toWindow newWindow: UIWindow?) {
+            if newWindow != nil, let v = superview {
+                frame = v.bounds
+            }
+        }
+        
+        convenience init() {
+            self.init(frame: CGRect())
+            initialize()
+        }
+    }
+    
+    private class MainView: UIView {
+        convenience init() {
+            self.init(frame: CGRect())
+            backgroundColor = .clear
+            addGestureRecognizer(UITapGestureRecognizer(target: nil, action: nil))
+
+            addSubview(BackView())
+            addSubview(LoaderView())
+        }
+    }
+    
+    static private let mainView = MainView()
+    static func start(inView: UIView? = nil) {
+        if mainView.superview != nil {
+            return
+        }
+        if let container = inView ?? (UIApplication.shared.windows.filter {$0.isKeyWindow}.first) {
+            mainView.frame = container.bounds
+            container.addSubview(mainView)
+        }
+    }
+    
+    static func stop() {
+        if mainView.superview != nil {
+            mainView.removeFromSuperview()
+        }
+    }
+}
+
+
+
+@objc class MYHud: UIViewController {
+    @objc class func show () {
+        Loader.start()
     }
     @objc class func hide () {
-        hud?.hide()
-        hud = nil
+        Loader.stop()
     }
-    private var window: UIWindow!
-    
-    func show () {
-        window = createNewWindow()
-        self.modalPresentationStyle = .fullScreen
-        window.rootViewController!.present(self, animated: false, completion: nil)
-    }
-    
-    func hide () {
-        window.resignKey()
-        window.isHidden = true
-        window.removeFromSuperview()
-        window.windowLevel = UIWindow.Level.alert - 1
-        window.setNeedsLayout()
-        dismiss(animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        view.backgroundColor = .clear
-        view.frame = UIScreen.main.bounds
-        addHud()
-    }
-    
-    private func addHud() {
-        let backColor = UIView()
-        view.addSubview(backColor)
-        backColor.backgroundColor = .black
-        backColor.alpha = 0.33
-        backColor.frame = view.bounds
-        
-        let hud = UIActivityIndicatorView()
-        view.addSubview(hud)
-        hud.style = UIActivityIndicatorView.Style.whiteLarge
-        hud.center = view.center
-        hud.startAnimating()
-    }
-    
-    private func createNewWindow() -> UIWindow {
-        let ctrl = UIViewController()
-        ctrl.view.backgroundColor = .clear
-        ctrl.providesPresentationContextTransitionStyle = true
-        ctrl.definesPresentationContext = true
-        ctrl.modalPresentationStyle = .overCurrentContext
-        ctrl.modalTransitionStyle = .crossDissolve
-        
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = ctrl
-        window.windowLevel = UIWindow.Level.alert + 1
-        window.makeKeyAndVisible()
-        return window
-    }
-    
-    private class RadialGradientView: UIView {
-        let colors = [UIColor.white.cgColor, UIColor.black.cgColor] as CFArray
-        override func draw(_ rect: CGRect) {
-            let gradient = CGGradient(colorsSpace: nil,
-                                      colors: colors,
-                                      locations: nil)
-            let context = UIGraphicsGetCurrentContext()
-            context?.drawRadialGradient(gradient!,
-                                        startCenter: center,
-                                        startRadius: 0.0,
-                                        endCenter: center,
-                                        endRadius: frame.height / 2,
-                                        options: .drawsBeforeStartLocation)
-        }
-    }
-    private func blurOnView(_ view: UIView) {
-        view.backgroundColor = .clear
-        let blurFx = UIBlurEffect(style: .dark)
-        let blurFxView = UIVisualEffectView(effect: blurFx)
-        blurFxView.frame = view.bounds
-        blurFxView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.insertSubview(blurFxView, at: 0)
-    }
- }
+}
