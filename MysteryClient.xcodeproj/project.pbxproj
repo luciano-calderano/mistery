@@ -117,7 +117,7 @@
 		8B1CAB612338AB9300B987C6 /* KpiMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30C1E9207F59270018BD6C /* KpiMain.swift */; };
 		8B1CAB622338AB9300B987C6 /* JobDetailDesc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A210991F03A82A00D1480C /* JobDetailDesc.swift */; };
 		8B1CAB632338AB9300B987C6 /* KpiMainUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30C1E1207F59270018BD6C /* KpiMainUtil.swift */; };
-		8B1CAB642338AB9300B987C6 /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
+		8B1CAB642338AB9300B987C6 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* Loader.swift */; };
 		8B1CAB652338AB9300B987C6 /* ResultStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048C44861F5B183D00E836C0 /* ResultStruct.swift */; };
 		8B1CAB662338AB9300B987C6 /* KpiBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B30C1E0207F59270018BD6C /* KpiBaseView.swift */; };
 		8B1CAB672338AB9300B987C6 /* KpiAtch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B6C1BCA207F867300715B82 /* KpiAtch.swift */; };
@@ -153,7 +153,7 @@
 		8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF02338DA78000C6A16 /* MC.xcassets */; };
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
-		8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* MYHud.swift */; };
+		8BAE9F58231EAE730083DF5C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* Loader.swift */; };
 		8BD233B723509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
 		8BD233B823509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
 		8BDDBC702372CDD200744A35 /* EA-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8B2338AB9400B987C6 /* EA-Info.plist */; };
@@ -265,7 +265,7 @@
 		8B56FEFA2338DBF3000C6A16 /* Easy audit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy audit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5786E0233241EA00C7C0E6 /* MysteryClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MysteryClient.entitlements; sourceTree = "<group>"; };
 		8BAE0892211C432600911B4E /* MYGps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYGps.swift; sourceTree = "<group>"; };
-		8BAE9F57231EAE730083DF5C /* MYHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MYHud.swift; sourceTree = "<group>"; };
+		8BAE9F57231EAE730083DF5C /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		8BD233B623509875005E345E /* MainOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnAppear.swift; sourceTree = "<group>"; };
 		8BF04F18214A9AD500ADF6E0 /* JobDetailNotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailNotes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,7 +358,7 @@
 				04D74DB01F5AA8190093EB4B /* MYZip.swift */,
 				04B1BAD41F459D3A007A1B64 /* MYHttp.swift */,
 				8B0CA1E8212C07650016B90A /* MYUpload.swift */,
-				8BAE9F57231EAE730083DF5C /* MYHud.swift */,
+				8BAE9F57231EAE730083DF5C /* Loader.swift */,
 				04A88E7A1F13D33800FBAE54 /* MYKeyboard.swift */,
 				048C44821F5B161C00E836C0 /* MYMaps.swift */,
 				8BAE0892211C432600911B4E /* MYGps.swift */,
@@ -831,7 +831,7 @@
 				04A2109A1F03A82A00D1480C /* JobDetailDesc.swift in Sources */,
 				4B30C1F9207F59270018BD6C /* KpiMainUtil.swift in Sources */,
 				8BD233B723509875005E345E /* MainOnAppear.swift in Sources */,
-				8BAE9F58231EAE730083DF5C /* MYHud.swift in Sources */,
+				8BAE9F58231EAE730083DF5C /* Loader.swift in Sources */,
 				048C44871F5B183D00E836C0 /* ResultStruct.swift in Sources */,
 				4B30C1F8207F59270018BD6C /* KpiBaseView.swift in Sources */,
 				4B6C1BCB207F867300715B82 /* KpiAtch.swift in Sources */,
@@ -889,7 +889,7 @@
 				8B1CAB622338AB9300B987C6 /* JobDetailDesc.swift in Sources */,
 				8B1CAB632338AB9300B987C6 /* KpiMainUtil.swift in Sources */,
 				8BD233B823509875005E345E /* MainOnAppear.swift in Sources */,
-				8B1CAB642338AB9300B987C6 /* MYHud.swift in Sources */,
+				8B1CAB642338AB9300B987C6 /* Loader.swift in Sources */,
 				8B1CAB652338AB9300B987C6 /* ResultStruct.swift in Sources */,
 				8B1CAB662338AB9300B987C6 /* KpiBaseView.swift in Sources */,
 				8B1CAB672338AB9300B987C6 /* KpiAtch.swift in Sources */,

@@ -59,13 +59,16 @@ class WebPage: MYViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        Loader.start()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if page.isEmpty {
             return
         }
-        MYHud.show()
-
         if isSignUp {
             let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             let request = URLRequest(url: URL(string: urlPage!)!)
@@ -77,6 +80,7 @@ class WebPage: MYViewController {
             let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
             var request = URLRequest(url: URL(string: urlPage!)!)
             request.setValue(User.shared.token, forHTTPHeaderField: "Authorization")
+            Loader.start()
             webView.load(request)
         }
         User.shared.getUserToken(completion: { (redirect_url) in
@@ -92,7 +96,7 @@ class WebPage: MYViewController {
 
 extension WebPage: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        MYHud.hide()
+        Loader.stop()
         alert("Errore", message: error.localizedDescription) {
             (result) in
             self.navigationController?.popViewController(animated: true)
@@ -100,7 +104,8 @@ extension WebPage: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        MYHud.hide()
+        Loader.stop()
+
         webView.frame = container.bounds
         container.addSubview(webView)
     }

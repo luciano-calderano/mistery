@@ -53,13 +53,11 @@ class JobSelected {
     }
     
     private func loadJobDetail () {
-        MYHud.show()
         let job = Current.job
         let param = [ "object" : "job", "object_id":  job.id ] as JsonDict
         let request = MYHttp(.get, param: param)
         request.load(ok: {
             (response) in
-            MYHud.hide()
             let dict = response.dictionary("job")
             if let job = MYJob.shared.createJob(withDict: dict) {
                 Current.job = job
@@ -69,7 +67,6 @@ class JobSelected {
             self.completionHandler("Errore lettura dettaglio incarico", "\(job.id)")
         }) {
             (errorCode, message) in
-            MYHud.hide()
             self.completionHandler(errorCode, message)
         }
     }

@@ -64,10 +64,8 @@ class JobDetail: MYViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if Current.job.learning_done == true {
-            MYHud.show()
             let js = JobSelected()
             js.load(Current.job, completion: { (error, msg) in
-                MYHud.hide()
                 if (error.isEmpty) {
                     self.loadAndShowResult()
                 } else {
@@ -120,17 +118,15 @@ class JobDetail: MYViewController {
             MYResult.shared.saveCurrentResult()
         }
         
-        if (Current.job.notes.count > 0) {
+        if Current.job.notes.count > 0 {
             let ctrl = JobDetailNotes.Instance()
             ctrl.modalPresentationStyle = .fullScreen
             ctrl.navi = navigationController!
             present(ctrl, animated: true, completion: nil)
         }
         else {
-            MYHud.show()
             let ctrl = KpiMain.Instance()
             navigationController?.show(ctrl, sender: self)
-            MYHud.hide()
         }
     }
     

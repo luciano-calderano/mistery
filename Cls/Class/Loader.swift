@@ -88,14 +88,3 @@ public struct Loader {
         }
     }
 }
-
-
-
-@objc class MYHud: UIViewController {
-    @objc class func show () {
-        Loader.start()
-    }
-    @objc class func hide () {
-        Loader.stop()
-    }
-}

@@ -61,16 +61,13 @@ class JobsHome: MYViewController {
         }
         
         func loadJobsList () {
-            MYHud.show()
             let param = [ "object" : "jobs_list" ]
             let request = MYHttp(.get, param: param)
             request.load(ok: {
                 (response) in
-                MYHud.hide()
                 showJobsList(jobDictArray: response.array("jobs") as! [JsonDict])
             }) {
                 (errorCode, message) in
-                MYHud.hide()
                 showError(error: errorCode, message: message)
             }
         }
@@ -142,12 +139,12 @@ extension JobsHome: UITableViewDelegate {
                 return
             }
             bugsnag.setUser(id: jobId!)
-            MYHud.show()
+            Loader.start()
             Current.job.id = jobId!
             let mySend = MySend()
             mySend.onTerminate = {
                 (title, msg) in
-                MYHud.hide()
+                Loader.stop()
                 self.alert(title, message: msg)
                 self.getListZip()
                 tableView.reloadData()
@@ -171,10 +168,8 @@ extension JobsHome: JobsHomeCellDelegate {
 extension JobsHome {
     func selectedJob (_ job: Job) {
         bugsnag.setUser(id: job.id)
-        MYHud.show()
         let js = JobSelected()
         js.load(job, completion: { (error, msg) in
-            MYHud.hide()
             if (error.isEmpty) {
                 self.navigationController?.show(JobDetail.Instance(), sender: self)
             } else {

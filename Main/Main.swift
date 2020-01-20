@@ -187,20 +187,17 @@ extension Main {
 
 extension Main: LoginViewDelegate {
     func loginView(_ view: LoginView, user: String, pass: String, save: Bool) {
-        MYHud.show()
         User.shared.checkUser(saveCredential: save,
                               userName: user,
                               password: pass,
                               completion: { (redirect_url) in
                                 print(redirect_url)
-                                MYHud.hide()
                                 view.removeFromSuperview()
                                 MYJob.shared.clearJobs()
                                 
                                 self.sendTokenPush()
                                 
         }) { (errorCode, message) in
-            MYHud.hide()
             self.alert(errorCode, message: message, okBlock: nil)
         }
     }

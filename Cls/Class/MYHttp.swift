@@ -52,11 +52,12 @@ class MYHttp {
             headers["Authorization"] = User.shared.token
             print ("Auth: " + User.shared.token)
         }
-        
+        Loader.start()
         Alamofire.request(apiUrl,
                           method: type,
                           parameters: json,
                           headers: headers).responseString { response in
+                            Loader.stop()
                             let data = self.fixResponse(response)
                             if data.isValid {
                                 ok (data.dict)
