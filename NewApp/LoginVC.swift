@@ -23,6 +23,7 @@ class LoginVC: UIViewController {
     private var saveCred = false
     
     private let home = "https://shopper.mebius.it"
+    private let oldHome = "https://mysteryclient.mebius.it"
     
     //MARK:-
     
@@ -70,12 +71,12 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signUpTapped () {
-        let url = home + "/login/register?app=1"
+        let url = oldHome + "/login/register?app=1"
         openWeb(url)
     }
     
     @IBAction func credRecoverTapped () {
-        let url = home + "/login/retrieve-password/app/1"
+        let url = oldHome + "/login/retrieve-password/app/1"
         openWeb(url)
     }
     
