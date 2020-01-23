@@ -152,6 +152,9 @@
 		8B1CAB8F2338C23B00B987C6 /* AppConfigEA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */; };
 		8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF02338DA78000C6A16 /* MC.xcassets */; };
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
+		8B6E9B9723D9B2E800533928 /* WebApp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B6E9B9623D9B2E800533928 /* WebApp.storyboard */; };
+		8B6E9B9923D9B47E00533928 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E9B9823D9B47E00533928 /* LoginVC.swift */; };
+		8B6E9B9D23D9B7F500533928 /* WebAppVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6E9B9C23D9B7F500533928 /* WebAppVC.swift */; };
 		8BAE0893211C432600911B4E /* MYGps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE0892211C432600911B4E /* MYGps.swift */; };
 		8BAE9F58231EAE730083DF5C /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAE9F57231EAE730083DF5C /* Loader.swift */; };
 		8BD233B723509875005E345E /* MainOnAppear.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD233B623509875005E345E /* MainOnAppear.swift */; };
@@ -264,6 +267,9 @@
 		8B56FEF92338DBD3000C6A16 /* MysteryClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MysteryClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B56FEFA2338DBF3000C6A16 /* Easy audit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Easy audit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5786E0233241EA00C7C0E6 /* MysteryClient.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MysteryClient.entitlements; sourceTree = "<group>"; };
+		8B6E9B9623D9B2E800533928 /* WebApp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebApp.storyboard; sourceTree = "<group>"; };
+		8B6E9B9823D9B47E00533928 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		8B6E9B9C23D9B7F500533928 /* WebAppVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebAppVC.swift; sourceTree = "<group>"; };
 		8BAE0892211C432600911B4E /* MYGps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYGps.swift; sourceTree = "<group>"; };
 		8BAE9F57231EAE730083DF5C /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		8BD233B623509875005E345E /* MainOnAppear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnAppear.swift; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 		044619C71EFA640F008CD1E2 = {
 			isa = PBXGroup;
 			children = (
+				8B6E9B9523D9B2BF00533928 /* NewApp */,
 				044619EC1EFA66A7008CD1E2 /* Cls */,
 				4B311340207E174700BA77D8 /* Main */,
 				04FCF1971F0265D50087FBDF /* Jobs */,
@@ -532,6 +539,16 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		8B6E9B9523D9B2BF00533928 /* NewApp */ = {
+			isa = PBXGroup;
+			children = (
+				8B6E9B9623D9B2E800533928 /* WebApp.storyboard */,
+				8B6E9B9823D9B47E00533928 /* LoginVC.swift */,
+				8B6E9B9C23D9B7F500533928 /* WebAppVC.swift */,
+			);
+			path = NewApp;
+			sourceTree = "<group>";
+		};
 		ED20667E76FEFF411228DFC2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +677,7 @@
 				04BC64131EFD830E00C0912D /* Assets.xcassets in Resources */,
 				4B31134C207E174700BA77D8 /* MenuView.xib in Resources */,
 				8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */,
+				8B6E9B9723D9B2E800533928 /* WebApp.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +821,7 @@
 				4B43C493208E07CB0073D566 /* Main.swift in Sources */,
 				048C44831F5B161C00E836C0 /* MYMaps.swift in Sources */,
 				04A2109D1F03AC3400D1480C /* JobDetailAtch.swift in Sources */,
+				8B6E9B9923D9B47E00533928 /* LoginVC.swift in Sources */,
 				04461A2D1EFA85CF008CD1E2 /* Ext.UIFont.swift in Sources */,
 				4B30C1FE207F59270018BD6C /* KpiQuestView.swift in Sources */,
 				4B30C1FA207F59270018BD6C /* KpiInitView.swift in Sources */,
@@ -834,6 +853,7 @@
 				8BAE9F58231EAE730083DF5C /* Loader.swift in Sources */,
 				048C44871F5B183D00E836C0 /* ResultStruct.swift in Sources */,
 				4B30C1F8207F59270018BD6C /* KpiBaseView.swift in Sources */,
+				8B6E9B9D23D9B7F500533928 /* WebAppVC.swift in Sources */,
 				4B6C1BCB207F867300715B82 /* KpiAtch.swift in Sources */,
 				4B31134D207E174700BA77D8 /* MenuView.swift in Sources */,
 				04BEDABA1F5BF8640076A05E /* MYJob.swift in Sources */,
@@ -1021,7 +1041,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191109;
+				CURRENT_PROJECT_VERSION = 200120;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1046,7 +1066,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MysteryClient/MysteryClient.entitlements;
-				CURRENT_PROJECT_VERSION = 191109;
+				CURRENT_PROJECT_VERSION = 200120;
 				DEVELOPMENT_TEAM = K2DWY28S5B;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

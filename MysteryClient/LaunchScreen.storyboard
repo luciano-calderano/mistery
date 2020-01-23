@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -31,17 +29,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back" translatesAutoresizingMaskIntoConstraints="NO" id="PWw-gB-GdP">
-                                <rect key="frame" x="0.0" y="30" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Mbd-Ek-6q3" secondAttribute="trailing" constant="16" id="2Dk-xz-7FN"/>
-                            <constraint firstItem="PWw-gB-GdP" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="10" id="C1r-8v-icg"/>
+                            <constraint firstItem="PWw-gB-GdP" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="C1r-8v-icg"/>
                             <constraint firstItem="Mbd-Ek-6q3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="16" id="g8j-6w-Vfk"/>
                             <constraint firstItem="PWw-gB-GdP" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="kKO-FI-kMb"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Mbd-Ek-6q3" secondAttribute="bottom" constant="20" id="mMj-kv-v6W"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PWw-gB-GdP" secondAttribute="bottom" constant="-10" id="nC0-7X-dit"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="PWw-gB-GdP" secondAttribute="bottom" id="nC0-7X-dit"/>
                             <constraint firstAttribute="trailing" secondItem="PWw-gB-GdP" secondAttribute="trailing" id="oNQ-99-yoa"/>
                         </constraints>
                     </view>

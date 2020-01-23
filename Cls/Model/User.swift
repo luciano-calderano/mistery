@@ -119,8 +119,11 @@ class User: NSObject {
         let req = MYHttp(.grant, param: param, hasHeader: false)
         req.load(ok: {
             (response) in
-            self.token = response.string("token->access_token")
-            completion(response.string("redirect_url"))
+            if let tokenDict = response["token"] as? JsonDict, let token = tokenDict["access_token"] as? String {
+                completion(token)
+                return
+            }
+            failure("-", "Token mancante")
         }) {
             (code, error) in
             failure(code, error)
