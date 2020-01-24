@@ -26,9 +26,6 @@ class WebAppVC: MYViewController {
         super.viewDidLoad()
         container.isUserInteractionEnabled = true
         webView.navigationDelegate = self
-//        if self.title?.isEmpty == false {
-//            headerTitle = self.title!
-//        }
         let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let request = URLRequest(url: URL(string: urlPage!)!)
         webView.load(request)
@@ -59,8 +56,9 @@ extension WebAppVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         print(navigationResponse.response.url ?? "-")
         if let url = navigationResponse.response.url {
-            if url.absoluteString.contains("logout") {
-                navigationController?.popToRootViewController(animated: true)
+            if url.lastPathComponent == "logout" {
+                dismiss(animated: true, completion: nil)
+//                navigationController?.popToRootViewController(animated: true)
             }
         }
         decisionHandler(.allow)

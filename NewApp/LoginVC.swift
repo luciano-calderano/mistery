@@ -110,7 +110,9 @@ class LoginVC: UIViewController {
     private func openWeb(_ url: String ) {
         let web = WebAppVC.Instance()
         web.page = url
-        navigationController?.show(web, sender: self)
+        web.modalPresentationStyle = .overFullScreen
+        present(web, animated: false, completion: nil)
+//        navigationController?.show(web, sender: self)
     }
 }
 
