@@ -26,9 +26,9 @@ class WebAppVC: MYViewController {
         super.viewDidLoad()
         container.isUserInteractionEnabled = true
         webView.navigationDelegate = self
-        if self.title?.isEmpty == false {
-            headerTitle = self.title!
-        }
+//        if self.title?.isEmpty == false {
+//            headerTitle = self.title!
+//        }
         let urlPage = page.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
         let request = URLRequest(url: URL(string: urlPage!)!)
         webView.load(request)

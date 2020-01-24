@@ -22,9 +22,12 @@ class LoginVC: UIViewController {
     private var checkImg: UIImage?
     private var saveCred = false
     
+    private let kUser = "kUser"
+    private let kPass = "kPass"
     private let home = "https://shopper.mebius.it"
-    private let oldHome = "https://mysteryclient.mebius.it"
-    
+    private let urlRecover = "https://mysteryclient.mebius.it/login/retrieve-password/app/1"
+    private let urlSignup  = "https://mysteryclient.mebius.it/login/register?app=1"
+
     //MARK:-
     
     override func viewDidLoad() {
@@ -39,17 +42,19 @@ class LoginVC: UIViewController {
         passView.layer.cornerRadius = passView.frame.size.height / 2
         
         saveCredButton.setImage(nil, for: .normal)
-        
-        let credential = User.shared.credential()
-        userText.text = credential.user
-        passText.text = credential.pass
-        
-        #if DEBUG
-        userText.text = "utente_gen";   passText.text = "novella18"
-        #endif
-        
-        saveCred = !credential.user.isEmpty
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let cred = UserDefaults.standard
+        userText.text = cred.object(forKey: kUser) as? String ?? ""
+        passText.text = cred.object(forKey: kPass) as? String ?? ""
+        saveCred = userText.text!.count > 0
         updateCheckCredential()
+
+        #if DEBUG
+//         userText.text = "utente_gen";   passText.text = "novella18"
+        #endif
     }
     
     @IBAction func saveCredTapped () {
@@ -67,20 +72,30 @@ class LoginVC: UIViewController {
             return
         }
         view.endEditing(true)
-        login()
+        
+        getToken({ (token) in
+            self.logged(token: token)
+        })
     }
     
     @IBAction func signUpTapped () {
-        let url = oldHome + "/login/register?app=1"
-        openWeb(url)
+        openWeb(urlSignup)
     }
     
     @IBAction func credRecoverTapped () {
-        let url = oldHome + "/login/retrieve-password/app/1"
-        openWeb(url)
+        openWeb(urlRecover)
     }
     
     private func logged(token: String ) {
+        let cred = UserDefaults.standard
+        if saveCred {
+            cred.set(userText.text, forKey: kUser)
+            cred.set(passText.text, forKey: kPass)
+        }
+        else {
+            cred.set("", forKey: kUser)
+            cred.set("", forKey: kPass)
+        }
         let url = home + "?token=" + token
         openWeb(url)
     }
@@ -92,19 +107,6 @@ class LoginVC: UIViewController {
         saveCredButton.setImage(img, for: .normal)
     }
     
-    private func login() {
-        User.shared.checkUser(saveCredential: saveCred,
-                              userName: userText.text!,
-                              password: passText.text!,
-                              completion: { (token) in
-                                self.logged(token: token)
-                                
-        }) { (errorCode, message) in
-            self.alert(errorCode, message: message, okBlock: nil)
-        }
-    }
-
- 
     private func openWeb(_ url: String ) {
         let web = WebAppVC.Instance()
         web.page = url
@@ -124,5 +126,33 @@ extension LoginVC: UITextFieldDelegate {
             view.endEditing(true)
         }
         return true
+    }
+}
+
+extension LoginVC {
+    func getToken(_ completion: @escaping (String) -> ()) {
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "?"
+        
+        let param = [
+            "grant_type"    : "password",
+            "client_id"     : AppConf.client_id,
+            "client_secret" : AppConf.client_secret,
+            "version"       : "i" + version,
+            "username"      : userText.text!,
+            "password"      : passText.text!,
+        ]
+        
+        let req = MYReq(Config.Url.grant)
+        req.params = param
+        req.start { (response) in
+            print(response)
+            if response.success,
+                let tokenDict = response.jsonDict["token"] as? JsonDict,
+                let token = tokenDict["access_token"] as? String {
+                completion(token)
+                return
+            }
+            self.alert("Errore", message: response.errorDesc)
+        }
     }
 }
