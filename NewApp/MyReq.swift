@@ -33,26 +33,20 @@ class MYReq {
     
     func start (_ completion: @escaping (Response) -> ()) {
         Loader.start()
-        func jsonBody() -> Data {
-            func encode (_ string: String) -> String {
-                var urlAllowed = CharacterSet.urlQueryAllowed
-                urlAllowed.remove(charactersIn: ":#[]@!$&'()*+,;=")
-                return string.addingPercentEncoding(withAllowedCharacters: urlAllowed)!
-            }
-            var jsonString = ""
-            for (key, value) in self.params {
-                if jsonString.count > 0 {
-                    jsonString += "&"
-                }
-                jsonString += encode(key) + "=" + encode(String(describing: value))
-            }
-            return jsonString.data(using: String.Encoding.utf8)!
-        }
+        let arr: Array = params.compactMap( { (key, value) -> String in return "\(key)=\(value)" } )
+        let jsonString = arr.joined(separator: "&")
         
         var request = URLRequest(url: url)
         request.httpMethod = type.rawValue
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonBody()
+        
+        switch type {
+        case .get:
+            let newUrl = url.absoluteString + "?" + jsonString
+            request.url = URL(string: newUrl)
+        case .post:
+            request.httpBody = jsonString.data(using: .utf8)!
+        }
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {

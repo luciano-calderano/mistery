@@ -150,6 +150,7 @@
 		8B1CAB842338AB9300B987C6 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B311346207E174700BA77D8 /* MenuView.xib */; };
 		8B1CAB8D2338C21200B987C6 /* AppConfigMC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8C2338C21200B987C6 /* AppConfigMC.swift */; };
 		8B1CAB8F2338C23B00B987C6 /* AppConfigEA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */; };
+		8B1DCAC223E02E870064F94B /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1DCAC123E02E870064F94B /* Upload.swift */; };
 		8B2A6A4B23DB035A00864492 /* MyReq.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A6A4A23DB035A00864492 /* MyReq.swift */; };
 		8B56FEF12338DA78000C6A16 /* MC.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF02338DA78000C6A16 /* MC.xcassets */; };
 		8B56FEF42338DB07000C6A16 /* EA.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B56FEF32338DB07000C6A16 /* EA.xcassets */; };
@@ -263,6 +264,7 @@
 		8B1CAB8B2338AB9400B987C6 /* EA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "EA-Info.plist"; path = "/Users/developer/Desktop/Lc/mysteryclient-master/EA-Info.plist"; sourceTree = "<absolute>"; };
 		8B1CAB8C2338C21200B987C6 /* AppConfigMC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppConfigMC.swift; path = MysteryClient/AppConfigMC.swift; sourceTree = SOURCE_ROOT; };
 		8B1CAB8E2338C23B00B987C6 /* AppConfigEA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigEA.swift; sourceTree = "<group>"; };
+		8B1DCAC123E02E870064F94B /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		8B2A6A4A23DB035A00864492 /* MyReq.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReq.swift; sourceTree = "<group>"; };
 		8B56FEF02338DA78000C6A16 /* MC.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = MC.xcassets; path = MysteryClient/MC.xcassets; sourceTree = "<group>"; };
 		8B56FEF32338DB07000C6A16 /* EA.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = EA.xcassets; path = MysteryClient/EA.xcassets; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 				8B6E9B9823D9B47E00533928 /* LoginVC.swift */,
 				8B6E9B9C23D9B7F500533928 /* WebAppVC.swift */,
 				8B2A6A4A23DB035A00864492 /* MyReq.swift */,
+				8B1DCAC123E02E870064F94B /* Upload.swift */,
 			);
 			path = NewApp;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				048C44831F5B161C00E836C0 /* MYMaps.swift in Sources */,
 				04A2109D1F03AC3400D1480C /* JobDetailAtch.swift in Sources */,
 				8B6E9B9923D9B47E00533928 /* LoginVC.swift in Sources */,
+				8B1DCAC223E02E870064F94B /* Upload.swift in Sources */,
 				04461A2D1EFA85CF008CD1E2 /* Ext.UIFont.swift in Sources */,
 				4B30C1FE207F59270018BD6C /* KpiQuestView.swift in Sources */,
 				4B30C1FA207F59270018BD6C /* KpiInitView.swift in Sources */,
